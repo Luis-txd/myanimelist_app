@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
-part 'list.g.dart';
+
+import '../common/common.dart';
+part 'anime_list.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class AnimeListModel {
@@ -27,38 +29,6 @@ class AnimeListData {
   factory AnimeListData.fromJson(Map<String, dynamic> json) => _$AnimeListDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$AnimeListDataToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class AnimeListNode {
-  int id;
-  String title;
-  AnimeListMainPicture mainPicture;
-
-  AnimeListNode({
-    required this.id,
-    required this.title,
-    required this.mainPicture,
-  });
-
-  factory AnimeListNode.fromJson(Map<String, dynamic> json) => _$AnimeListNodeFromJson(json);
-
-  Map<String, dynamic> toJson() => _$AnimeListNodeToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class AnimeListMainPicture {
-  String medium;
-  String large;
-
-  AnimeListMainPicture({
-    required this.medium,
-    required this.large,
-  });
-
-  factory AnimeListMainPicture.fromJson(Map<String, dynamic> json) => _$AnimeListMainPictureFromJson(json);
-
-  Map<String, dynamic> toJson() => _$AnimeListMainPictureToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)

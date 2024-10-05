@@ -1,11 +1,13 @@
 import 'package:json_annotation/json_annotation.dart';
-part 'detail.g.dart';
+
+import '../common/common.dart';
+part 'anime_detail.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class AnimeDetail {
   int id;
   String title;
-  Picture mainPicture;
+  MainPicture mainPicture;
   AlternativeTitles alternativeTitles;
   DateTime startDate;
   DateTime endDate;
@@ -28,7 +30,7 @@ class AnimeDetail {
   String source;
   int averageEpisodeDuration;
   String rating;
-  List<Picture> pictures;
+  List<MainPicture> pictures;
   String background;
   List<RelatedAnime> relatedAnime;
   List<dynamic> relatedManga;
@@ -71,77 +73,9 @@ class AnimeDetail {
     required this.statistics,
   });
 
-  factory AnimeDetail.fromJson(Map<String, dynamic> json) => AnimeDetail(
-        id: json["id"],
-        title: json["title"],
-        mainPicture: Picture.fromJson(json["main_picture"]),
-        alternativeTitles: AlternativeTitles.fromJson(json["alternative_titles"]),
-        startDate: DateTime.parse(json["start_date"]),
-        endDate: DateTime.parse(json["end_date"]),
-        synopsis: json["synopsis"],
-        mean: json["mean"]?.toDouble(),
-        rank: json["rank"],
-        popularity: json["popularity"],
-        numListUsers: json["num_list_users"],
-        numScoringUsers: json["num_scoring_users"],
-        nsfw: json["nsfw"],
-        createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
-        mediaType: json["media_type"],
-        status: json["status"],
-        genres: List<Genre>.from(json["genres"].map((x) => Genre.fromJson(x))),
-        myListStatus: MyListStatus.fromJson(json["my_list_status"]),
-        numEpisodes: json["num_episodes"],
-        startSeason: StartSeason.fromJson(json["start_season"]),
-        broadcast: Broadcast.fromJson(json["broadcast"]),
-        source: json["source"],
-        averageEpisodeDuration: json["average_episode_duration"],
-        rating: json["rating"],
-        pictures: List<Picture>.from(json["pictures"].map((x) => Picture.fromJson(x))),
-        background: json["background"],
-        relatedAnime: List<RelatedAnime>.from(json["related_anime"].map((x) => RelatedAnime.fromJson(x))),
-        relatedManga: List<dynamic>.from(json["related_manga"].map((x) => x)),
-        recommendations: List<Recommendation>.from(json["recommendations"].map((x) => Recommendation.fromJson(x))),
-        studios: List<Genre>.from(json["studios"].map((x) => Genre.fromJson(x))),
-        statistics: Statistics.fromJson(json["statistics"]),
-      );
+  factory AnimeDetail.fromJson(Map<String, dynamic> json) => _$AnimeDetailFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "title": title,
-        "main_picture": mainPicture.toJson(),
-        "alternative_titles": alternativeTitles.toJson(),
-        "start_date":
-            "${startDate.year.toString().padLeft(4, '0')}-${startDate.month.toString().padLeft(2, '0')}-${startDate.day.toString().padLeft(2, '0')}",
-        "end_date":
-            "${endDate.year.toString().padLeft(4, '0')}-${endDate.month.toString().padLeft(2, '0')}-${endDate.day.toString().padLeft(2, '0')}",
-        "synopsis": synopsis,
-        "mean": mean,
-        "rank": rank,
-        "popularity": popularity,
-        "num_list_users": numListUsers,
-        "num_scoring_users": numScoringUsers,
-        "nsfw": nsfw,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
-        "media_type": mediaType,
-        "status": status,
-        "genres": List<dynamic>.from(genres.map((x) => x.toJson())),
-        "my_list_status": myListStatus.toJson(),
-        "num_episodes": numEpisodes,
-        "start_season": startSeason.toJson(),
-        "broadcast": broadcast.toJson(),
-        "source": source,
-        "average_episode_duration": averageEpisodeDuration,
-        "rating": rating,
-        "pictures": List<dynamic>.from(pictures.map((x) => x.toJson())),
-        "background": background,
-        "related_anime": List<dynamic>.from(relatedAnime.map((x) => x.toJson())),
-        "related_manga": List<dynamic>.from(relatedManga.map((x) => x)),
-        "recommendations": List<dynamic>.from(recommendations.map((x) => x.toJson())),
-        "studios": List<dynamic>.from(studios.map((x) => x.toJson())),
-        "statistics": statistics.toJson(),
-      };
+  Map<String, dynamic> toJson() => _$AnimeDetailToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -156,17 +90,9 @@ class AlternativeTitles {
     required this.ja,
   });
 
-  factory AlternativeTitles.fromJson(Map<String, dynamic> json) => AlternativeTitles(
-        synonyms: List<String>.from(json["synonyms"].map((x) => x)),
-        en: json["en"],
-        ja: json["ja"],
-      );
+  factory AlternativeTitles.fromJson(Map<String, dynamic> json) => _$AlternativeTitlesFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        "synonyms": List<dynamic>.from(synonyms.map((x) => x)),
-        "en": en,
-        "ja": ja,
-      };
+  Map<String, dynamic> toJson() => _$AlternativeTitlesToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -179,15 +105,9 @@ class Broadcast {
     required this.startTime,
   });
 
-  factory Broadcast.fromJson(Map<String, dynamic> json) => Broadcast(
-        dayOfTheWeek: json["day_of_the_week"],
-        startTime: json["start_time"],
-      );
+  factory Broadcast.fromJson(Map<String, dynamic> json) => _$BroadcastFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        "day_of_the_week": dayOfTheWeek,
-        "start_time": startTime,
-      };
+  Map<String, dynamic> toJson() => _$BroadcastToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -200,37 +120,11 @@ class Genre {
     required this.name,
   });
 
-  factory Genre.fromJson(Map<String, dynamic> json) => Genre(
-        id: json["id"],
-        name: json["name"],
-      );
+  factory Genre.fromJson(Map<String, dynamic> json) => _$GenreFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-      };
+  Map<String, dynamic> toJson() => _$GenreToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
-class Picture {
-  String medium;
-  String large;
-
-  Picture({
-    required this.medium,
-    required this.large,
-  });
-
-  factory Picture.fromJson(Map<String, dynamic> json) => Picture(
-        medium: json["medium"],
-        large: json["large"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "medium": medium,
-        "large": large,
-      };
-}
 
 @JsonSerializable(explicitToJson: true)
 class MyListStatus {
@@ -248,26 +142,14 @@ class MyListStatus {
     required this.updatedAt,
   });
 
-  factory MyListStatus.fromJson(Map<String, dynamic> json) => MyListStatus(
-        status: json["status"],
-        score: json["score"],
-        numEpisodesWatched: json["num_episodes_watched"],
-        isRewatching: json["is_rewatching"],
-        updatedAt: DateTime.parse(json["updated_at"]),
-      );
+  factory MyListStatus.fromJson(Map<String, dynamic> json) => _$MyListStatusFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        "status": status,
-        "score": score,
-        "num_episodes_watched": numEpisodesWatched,
-        "is_rewatching": isRewatching,
-        "updated_at": updatedAt.toIso8601String(),
-      };
+  Map<String, dynamic> toJson() => _$MyListStatusToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Recommendation {
-  Node node;
+  AnimeListNode node;
   int numRecommendations;
 
   Recommendation({
@@ -275,45 +157,14 @@ class Recommendation {
     required this.numRecommendations,
   });
 
-  factory Recommendation.fromJson(Map<String, dynamic> json) => Recommendation(
-        node: Node.fromJson(json["node"]),
-        numRecommendations: json["num_recommendations"],
-      );
+  factory Recommendation.fromJson(Map<String, dynamic> json) => _$RecommendationFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        "node": node.toJson(),
-        "num_recommendations": numRecommendations,
-      };
-}
-
-@JsonSerializable(explicitToJson: true)
-class Node {
-  int id;
-  String title;
-  Picture mainPicture;
-
-  Node({
-    required this.id,
-    required this.title,
-    required this.mainPicture,
-  });
-
-  factory Node.fromJson(Map<String, dynamic> json) => Node(
-        id: json["id"],
-        title: json["title"],
-        mainPicture: Picture.fromJson(json["main_picture"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "title": title,
-        "main_picture": mainPicture.toJson(),
-      };
+  Map<String, dynamic> toJson() => _$RecommendationToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class RelatedAnime {
-  Node node;
+  AnimeListNode node;
   String relationType;
   String relationTypeFormatted;
 
@@ -323,17 +174,9 @@ class RelatedAnime {
     required this.relationTypeFormatted,
   });
 
-  factory RelatedAnime.fromJson(Map<String, dynamic> json) => RelatedAnime(
-        node: Node.fromJson(json["node"]),
-        relationType: json["relation_type"],
-        relationTypeFormatted: json["relation_type_formatted"],
-      );
+  factory RelatedAnime.fromJson(Map<String, dynamic> json) => _$RelatedAnimeFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        "node": node.toJson(),
-        "relation_type": relationType,
-        "relation_type_formatted": relationTypeFormatted,
-      };
+  Map<String, dynamic> toJson() => _$RelatedAnimeToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -346,15 +189,9 @@ class StartSeason {
     required this.season,
   });
 
-  factory StartSeason.fromJson(Map<String, dynamic> json) => StartSeason(
-        year: json["year"],
-        season: json["season"],
-      );
+  factory StartSeason.fromJson(Map<String, dynamic> json) => _$StartSeasonFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        "year": year,
-        "season": season,
-      };
+  Map<String, dynamic> toJson() => _$StartSeasonToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -367,15 +204,9 @@ class Statistics {
     required this.numListUsers,
   });
 
-  factory Statistics.fromJson(Map<String, dynamic> json) => Statistics(
-        status: Status.fromJson(json["status"]),
-        numListUsers: json["num_list_users"],
-      );
+  factory Statistics.fromJson(Map<String, dynamic> json) => _$StatisticsFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        "status": status.toJson(),
-        "num_list_users": numListUsers,
-      };
+  Map<String, dynamic> toJson() => _$StatisticsToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -394,19 +225,7 @@ class Status {
     required this.planToWatch,
   });
 
-  factory Status.fromJson(Map<String, dynamic> json) => Status(
-        watching: json["watching"],
-        completed: json["completed"],
-        onHold: json["on_hold"],
-        dropped: json["dropped"],
-        planToWatch: json["plan_to_watch"],
-      );
+  factory Status.fromJson(Map<String, dynamic> json) => _$StatusFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        "watching": watching,
-        "completed": completed,
-        "on_hold": onHold,
-        "dropped": dropped,
-        "plan_to_watch": planToWatch,
-      };
+  Map<String, dynamic> toJson() => _$StatusToJson(this);
 }
