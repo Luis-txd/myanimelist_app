@@ -125,7 +125,6 @@ class Genre {
   Map<String, dynamic> toJson() => _$GenreToJson(this);
 }
 
-
 @JsonSerializable(explicitToJson: true)
 class MyListStatus {
   String status;
