@@ -44,6 +44,9 @@ dependencies:
   riverpod_annotation: ^2.3.5
   pretty_dio_logger: ^1.4.0
 
+  retrofit: any
+  auto_route: ^8.1.3
+  auto_route_generator: ^8.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
