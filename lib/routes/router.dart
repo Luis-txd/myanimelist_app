@@ -15,5 +15,10 @@ class AppRouter extends $AppRouter {
       initial: true,
       page: SplashScreen.page,
     ),
+    AutoRoute(
+      path: "/home",
+      page: HomeScreen.page,
+      initial: false,
+    )
   ];
 }

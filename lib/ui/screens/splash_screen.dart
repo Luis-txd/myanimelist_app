@@ -1,8 +1,10 @@
-
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:myanimelist_app/data/remote/interceptor/generic_error_interceptor.dart';
+import 'package:myanimelist_app/routes/router.gr.dart';
 
 @RoutePage()
 class SplashScreen extends ConsumerStatefulWidget {
@@ -13,11 +15,44 @@ class SplashScreen extends ConsumerStatefulWidget {
 }
 
 class _SplashScreenState extends ConsumerState<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    GenericErrorInterceptor.initialize(context);
+    WidgetsBinding.instance.addPostFrameCallback((timestamp) {
+      _loadData();
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  Future<void> _loadData() async {
+    _checkConnectivity();
+    return;
+  }
+
+  Future<void> _proceed() async {
+    FlutterNativeSplash.remove();
+    //TODO auth validation, send to auth screen if user not logged in
+    context.router.replaceAll([const HomeScreen()]);
+  }
+
+  void _checkConnectivity() async {
+    bool result = await InternetConnectionChecker().hasConnection;
+    if (result) {
+      _proceed();
+    } else {
+      //TODO:
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      body: Container(),
     );
   }
 }
