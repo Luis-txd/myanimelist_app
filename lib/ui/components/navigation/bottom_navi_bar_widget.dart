@@ -38,7 +38,7 @@ class _BottomNaviBarState extends ConsumerState<BottomNaviBar> {
               // Route push to correct screen
             }
           }, Icons.forum),
-          buildBottomNaviButton(widget.selectedIndex, "Account", context, 3, containerHeight, () {
+          buildBottomNaviButton(widget.selectedIndex, "Lists", context, 3, containerHeight, () {
             if (widget.selectedIndex != 3) {
               // Route push to correct screen
             }
@@ -83,7 +83,7 @@ class _BottomNaviBarState extends ConsumerState<BottomNaviBar> {
                       text,
                       maxLines: 2,
                       textAlign: TextAlign.center,
-                      style: AppTextTheme().bottomNavBar.copyWith(height: 1, color: Colors.white),
+                      style: AppTextTheme().bottomNavBar.copyWith(height: 1, color: AppColors().iconPrimary01), //TODO create new style for text color
                     ),
                   ),
                 ],

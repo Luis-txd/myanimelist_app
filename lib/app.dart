@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myanimelist_app/resources/app_colours.dart';
 import 'package:myanimelist_app/routes/router.dart';
 
 class MyApp extends StatelessWidget {
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        scaffoldBackgroundColor: AppColors().backgroundPrimary01,
       ),
       routeInformationParser: _appRouter.defaultRouteParser(),
       routerDelegate: _appRouter.delegate(),

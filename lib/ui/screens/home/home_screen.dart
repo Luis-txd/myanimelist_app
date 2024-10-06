@@ -41,10 +41,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.grey,
+              color: AppColors().iconBackgroundPrimary01,
               shape: BoxShape.circle
             ),
-            child: IconButton(
+            child: IconButton(  //TODO text button com texto a dizer Menu, sem background?
                 onPressed: () {
                   //TODO send to profile page
                 },
