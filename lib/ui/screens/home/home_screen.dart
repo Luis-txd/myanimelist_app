@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:myanimelist_app/resources/app_colours.dart';
 import 'package:myanimelist_app/ui/components/navigation/bottom_navi_bar_widget.dart';
 
 @RoutePage()
@@ -35,13 +36,37 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text("widget.title"),
+        backgroundColor: AppColors().backgroundPrimary01,
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.grey,
+              shape: BoxShape.circle
+            ),
+            child: IconButton(
+                onPressed: () {
+                  //TODO send to profile page
+                },
+                icon: Icon(Icons.apps, color: AppColors().iconPrimary01)),
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.grey,
+                  shape: BoxShape.circle
+              ),
+              child: IconButton(
+                  onPressed: () {
+                    //TODO send to profile page
+                  },
+                  icon: Icon(Icons.person, color: AppColors().iconPrimary01)),
+            ),
+          ),
+        ],
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -61,7 +86,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           // action in the IDE, or press "p" in the console), to see the
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: [
             const Text(
               'You have pushed the button this many times:',
             ),
@@ -71,11 +96,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
       bottomNavigationBar:
           const BottomNaviBar(selectedIndex: 0), // This trailing comma makes auto-formatting nicer for build methods.
