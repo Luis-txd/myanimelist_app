@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
@@ -27,30 +26,22 @@ class _BottomNaviBarState extends ConsumerState<BottomNaviBar> {
       color: AppColors().naviUnselected01,
       child: Row(
         children: [
-          buildBottomNaviButton(
-              widget.selectedIndex, "Home", context, 0, containerHeight, () {
-            log("Pressed Home");
+          buildBottomNaviButton(widget.selectedIndex, "Home", context, 0, containerHeight, () {
             if (widget.selectedIndex != 0) {
-              // Route push to correct screen
               context.router.replace(const HomeScreen());
             }
           }, Icons.home),
-          buildBottomNaviButton(
-              widget.selectedIndex, "Search", context, 1, containerHeight, () {
-            log("Pressed Search");
+          buildBottomNaviButton(widget.selectedIndex, "Search", context, 1, containerHeight, () {
             if (widget.selectedIndex != 1) {
-              // Route push to correct screen
               context.router.replace(const SearchScreen());
             }
           }, Icons.search),
-          buildBottomNaviButton(
-              widget.selectedIndex, "Hub", context, 2, containerHeight, () {
+          buildBottomNaviButton(widget.selectedIndex, "Hub", context, 2, containerHeight, () {
             if (widget.selectedIndex != 2) {
               // Route push to correct screen
             }
           }, Icons.forum),
-          buildBottomNaviButton(
-              widget.selectedIndex, "Lists", context, 3, containerHeight, () {
+          buildBottomNaviButton(widget.selectedIndex, "Lists", context, 3, containerHeight, () {
             if (widget.selectedIndex != 3) {
               // Route push to correct screen
             }
@@ -60,14 +51,8 @@ class _BottomNaviBarState extends ConsumerState<BottomNaviBar> {
     );
   }
 
-  Widget buildBottomNaviButton(
-      int selectedIndex,
-      String text,
-      BuildContext context,
-      int position,
-      double containerHeight,
-      VoidCallback onClick,
-      IconData icon) {
+  Widget buildBottomNaviButton(int selectedIndex, String text, BuildContext context, int position,
+      double containerHeight, VoidCallback onClick, IconData icon) {
     double itemWidth = MediaQuery.of(context).size.width / 4;
     bool isSelected = position == selectedIndex;
     // icon, padding text
@@ -93,10 +78,9 @@ class _BottomNaviBarState extends ConsumerState<BottomNaviBar> {
                   text,
                   maxLines: 2,
                   textAlign: TextAlign.center,
-                  style: AppTextTheme().bottomNavBar.copyWith(
-                      height: 1,
-                      color: AppColors()
-                          .iconPrimary01), //TODO create new style for text color
+                  style: AppTextTheme()
+                      .bottomNavBar
+                      .copyWith(height: 1, color: AppColors().iconPrimary01), //TODO create new style for text color
                 ),
               ),
             ],

@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:myanimelist_app/data/models/anime/anime_list.dart';
+import 'package:myanimelist_app/data/models/common/common.dart';
 import 'package:myanimelist_app/resources/app_colours.dart';
 import 'package:myanimelist_app/ui/components/navigation/bottom_navi_bar_widget.dart';
 
@@ -28,6 +30,30 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     });
   }
 
+  List<AnimeListData> nodes = [
+    AnimeListData(
+        node: AnimeListNode(
+            id: 21,
+            title: "One Piece",
+            mainPicture: MainPicture(
+                medium: "https://myanimelist.cdn-dena.com/images/anime/6/73245.jpg",
+                large: "https://myanimelist.cdn-dena.com/images/anime/6/73245l.jpg"))),
+    AnimeListData(
+        node: AnimeListNode(
+            id: 5040,
+            title: "One Outs",
+            mainPicture: MainPicture(
+                medium: "https://myanimelist.cdn-dena.com/images/anime/13/22669.jpg",
+                large: "https://myanimelist.cdn-dena.com/images/anime/13/22669l.jpg"))),
+    AnimeListData(
+        node: AnimeListNode(
+            id: 459,
+            title: "One Piece Movie 1",
+            mainPicture: MainPicture(
+                medium: "https://myanimelist.cdn-dena.com/images/anime/5/20925.jpg",
+                large: "https://myanimelist.cdn-dena.com/images/anime/5/20925l.jpg"))),
+  ];
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -42,8 +68,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
-            decoration:
-                BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
+            decoration: BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
             child: IconButton(
                 //TODO text button com texto a dizer Menu, sem background?
                 onPressed: () {
@@ -56,8 +81,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              decoration:
-                  BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
+              decoration: BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
               child: IconButton(
                   onPressed: () {
                     //TODO send to profile page
@@ -90,16 +114,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               'HOMESCREEN',
               style: AppTextTheme().h1.copyWith(height: 1, color: Colors.white),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNaviBar(
-          selectedIndex:
-              0), // This trailing comma makes auto-formatting nicer for build methods.
+      bottomNavigationBar:
+          const BottomNaviBar(selectedIndex: 0), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
