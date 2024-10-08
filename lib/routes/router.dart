@@ -19,6 +19,11 @@ class AppRouter extends $AppRouter {
       path: "/home",
       page: HomeScreen.page,
       initial: false,
-    )
+    ),
+    AutoRoute(
+      path: "/search",
+      page: SearchScreen.page,
+      initial: false,
+    ),
   ];
 }

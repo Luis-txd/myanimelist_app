@@ -7,15 +7,16 @@ import 'package:myanimelist_app/ui/components/navigation/bottom_navi_bar_widget.
 import '../../theme/app_text_theme.dart';
 
 @RoutePage()
-class HomeScreen extends ConsumerStatefulWidget {
-  const HomeScreen({super.key});
+class SearchScreen extends ConsumerStatefulWidget {
+  const SearchScreen({super.key});
 
   @override
-  ConsumerState<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<SearchScreen> createState() => _SearchScreenState();
 }
 
-class _HomeScreenState extends ConsumerState<HomeScreen> {
+class _SearchScreenState extends ConsumerState<SearchScreen> {
   int _counter = 0;
+  final String _query = "";
 
   void _incrementCounter() {
     setState(() {
@@ -87,7 +88,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'HOMESCREEN',
+              'SEARCH',
               style: AppTextTheme().h1.copyWith(height: 1, color: Colors.white),
             ),
             Text(
@@ -99,7 +100,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       ),
       bottomNavigationBar: const BottomNaviBar(
           selectedIndex:
-              0), // This trailing comma makes auto-formatting nicer for build methods.
+              1), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
