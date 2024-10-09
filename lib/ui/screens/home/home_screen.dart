@@ -36,22 +36,28 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             id: 21,
             title: "One Piece",
             mainPicture: MainPicture(
-                medium: "https://myanimelist.cdn-dena.com/images/anime/6/73245.jpg",
-                large: "https://myanimelist.cdn-dena.com/images/anime/6/73245l.jpg"))),
+                medium:
+                    "https://cdn.myanimelist.net/images/anime/1244/138851.jpg",
+                large:
+                    "https://cdn.myanimelist.net/images/anime/1244/138851l.jpg"))),
     AnimeListData(
         node: AnimeListNode(
-            id: 5040,
-            title: "One Outs",
+            id: 31772,
+            title: "One Punch Man",
             mainPicture: MainPicture(
-                medium: "https://myanimelist.cdn-dena.com/images/anime/13/22669.jpg",
-                large: "https://myanimelist.cdn-dena.com/images/anime/13/22669l.jpg"))),
+                medium:
+                    "https://cdn.myanimelist.net/images/anime/1452/97840.jpg",
+                large:
+                    "https://cdn.myanimelist.net/images/anime/1452/97840l.jpg"))),
     AnimeListData(
         node: AnimeListNode(
             id: 459,
             title: "One Piece Movie 1",
             mainPicture: MainPicture(
-                medium: "https://myanimelist.cdn-dena.com/images/anime/5/20925.jpg",
-                large: "https://myanimelist.cdn-dena.com/images/anime/5/20925l.jpg"))),
+                medium:
+                    "https://cdn.myanimelist.net/images/anime/1770/97704.jpg",
+                large:
+                    "https://cdn.myanimelist.net/images/anime/1770/97704l.jpg"))),
   ];
 
   @override
@@ -68,7 +74,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
-            decoration: BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
+            decoration:
+                BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
             child: IconButton(
                 //TODO text button com texto a dizer Menu, sem background?
                 onPressed: () {
@@ -81,7 +88,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              decoration: BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
+              decoration:
+                  BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
               child: IconButton(
                   onPressed: () {
                     //TODO send to profile page
@@ -95,30 +103,52 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               'HOMESCREEN',
               style: AppTextTheme().h1.copyWith(height: 1, color: Colors.white),
             ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: nodes.length,
+                itemBuilder: (context, index) {
+                  final item = nodes[index];
+                  return Row(
+                    children: [
+                      Image.network(
+                        item.node.mainPicture.large,
+                        height: 100,
+                        cacheHeight: 100,
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            item.node.title,
+                            style: AppTextTheme()
+                                .bodyNormal
+                                .copyWith(height: 1, color: Colors.white),
+                          ),
+                          // SizedBox(width: 10),
+                          // Text(
+                          //   item.node.id.toString(),
+                          //   style: AppTextTheme()
+                          //       .bodyNormal
+                          //       .copyWith(height: 1, color: Colors.white),
+                          // ),
+                        ],
+                      )
+                    ],
+                  );
+                },
+              ),
+            )
           ],
         ),
       ),
-      bottomNavigationBar:
-          const BottomNaviBar(selectedIndex: 0), // This trailing comma makes auto-formatting nicer for build methods.
+      bottomNavigationBar: const BottomNaviBar(
+          selectedIndex:
+              0), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
