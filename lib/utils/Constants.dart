@@ -1,1 +1,1 @@
-const String malLisAPI = "as";
+const String malLisAPI = 'as';

@@ -5,39 +5,6 @@ part 'anime_detail.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class AnimeDetail {
-  int id;
-  String title;
-  MainPicture mainPicture;
-  AlternativeTitles alternativeTitles;
-  DateTime startDate;
-  DateTime endDate;
-  String synopsis;
-  double mean;
-  int rank;
-  int popularity;
-  int numListUsers;
-  int numScoringUsers;
-  String nsfw;
-  DateTime createdAt;
-  DateTime updatedAt;
-  String mediaType;
-  String status;
-  List<Genre> genres;
-  MyListStatus myListStatus;
-  int numEpisodes;
-  StartSeason startSeason;
-  Broadcast broadcast;
-  String source;
-  int averageEpisodeDuration;
-  String rating;
-  List<MainPicture> pictures;
-  String background;
-  List<RelatedAnime> relatedAnime;
-  List<dynamic> relatedManga;
-  List<Recommendation> recommendations;
-  List<Genre> studios;
-  Statistics statistics;
-
   AnimeDetail({
     required this.id,
     required this.title,
@@ -74,16 +41,44 @@ class AnimeDetail {
   });
 
   factory AnimeDetail.fromJson(Map<String, dynamic> json) => _$AnimeDetailFromJson(json);
+  int id;
+  String title;
+  MainPicture mainPicture;
+  AlternativeTitles alternativeTitles;
+  DateTime startDate;
+  DateTime endDate;
+  String synopsis;
+  double mean;
+  int rank;
+  int popularity;
+  int numListUsers;
+  int numScoringUsers;
+  String nsfw;
+  DateTime createdAt;
+  DateTime updatedAt;
+  String mediaType;
+  String status;
+  List<Genre> genres;
+  MyListStatus myListStatus;
+  int numEpisodes;
+  StartSeason startSeason;
+  Broadcast broadcast;
+  String source;
+  int averageEpisodeDuration;
+  String rating;
+  List<MainPicture> pictures;
+  String background;
+  List<RelatedAnime> relatedAnime;
+  List<dynamic> relatedManga;
+  List<Recommendation> recommendations;
+  List<Genre> studios;
+  Statistics statistics;
 
   Map<String, dynamic> toJson() => _$AnimeDetailToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class AlternativeTitles {
-  List<String> synonyms;
-  String en;
-  String ja;
-
   AlternativeTitles({
     required this.synonyms,
     required this.en,
@@ -91,48 +86,43 @@ class AlternativeTitles {
   });
 
   factory AlternativeTitles.fromJson(Map<String, dynamic> json) => _$AlternativeTitlesFromJson(json);
+  List<String> synonyms;
+  String en;
+  String ja;
 
   Map<String, dynamic> toJson() => _$AlternativeTitlesToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Broadcast {
-  String dayOfTheWeek;
-  String startTime;
-
   Broadcast({
     required this.dayOfTheWeek,
     required this.startTime,
   });
 
   factory Broadcast.fromJson(Map<String, dynamic> json) => _$BroadcastFromJson(json);
+  String dayOfTheWeek;
+  String startTime;
 
   Map<String, dynamic> toJson() => _$BroadcastToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Genre {
-  int id;
-  String name;
-
   Genre({
     required this.id,
     required this.name,
   });
 
   factory Genre.fromJson(Map<String, dynamic> json) => _$GenreFromJson(json);
+  int id;
+  String name;
 
   Map<String, dynamic> toJson() => _$GenreToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class MyListStatus {
-  String status;
-  int score;
-  int numEpisodesWatched;
-  bool isRewatching;
-  DateTime updatedAt;
-
   MyListStatus({
     required this.status,
     required this.score,
@@ -142,31 +132,31 @@ class MyListStatus {
   });
 
   factory MyListStatus.fromJson(Map<String, dynamic> json) => _$MyListStatusFromJson(json);
+  String status;
+  int score;
+  int numEpisodesWatched;
+  bool isRewatching;
+  DateTime updatedAt;
 
   Map<String, dynamic> toJson() => _$MyListStatusToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Recommendation {
-  AnimeListNode node;
-  int numRecommendations;
-
   Recommendation({
     required this.node,
     required this.numRecommendations,
   });
 
   factory Recommendation.fromJson(Map<String, dynamic> json) => _$RecommendationFromJson(json);
+  AnimeListNode node;
+  int numRecommendations;
 
   Map<String, dynamic> toJson() => _$RecommendationToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class RelatedAnime {
-  AnimeListNode node;
-  String relationType;
-  String relationTypeFormatted;
-
   RelatedAnime({
     required this.node,
     required this.relationType,
@@ -174,48 +164,43 @@ class RelatedAnime {
   });
 
   factory RelatedAnime.fromJson(Map<String, dynamic> json) => _$RelatedAnimeFromJson(json);
+  AnimeListNode node;
+  String relationType;
+  String relationTypeFormatted;
 
   Map<String, dynamic> toJson() => _$RelatedAnimeToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class StartSeason {
-  int year;
-  String season;
-
   StartSeason({
     required this.year,
     required this.season,
   });
 
   factory StartSeason.fromJson(Map<String, dynamic> json) => _$StartSeasonFromJson(json);
+  int year;
+  String season;
 
   Map<String, dynamic> toJson() => _$StartSeasonToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Statistics {
-  Status status;
-  int numListUsers;
-
   Statistics({
     required this.status,
     required this.numListUsers,
   });
 
   factory Statistics.fromJson(Map<String, dynamic> json) => _$StatisticsFromJson(json);
+  Status status;
+  int numListUsers;
 
   Map<String, dynamic> toJson() => _$StatisticsToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Status {
-  String watching;
-  String completed;
-  String onHold;
-  String dropped;
-  String planToWatch;
-
   Status({
     required this.watching,
     required this.completed,
@@ -225,6 +210,11 @@ class Status {
   });
 
   factory Status.fromJson(Map<String, dynamic> json) => _$StatusFromJson(json);
+  String watching;
+  String completed;
+  String onHold;
+  String dropped;
+  String planToWatch;
 
   Map<String, dynamic> toJson() => _$StatusToJson(this);
 }

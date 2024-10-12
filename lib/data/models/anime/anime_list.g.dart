@@ -12,7 +12,7 @@ AnimeListModel _$AnimeListModelFromJson(Map<String, dynamic> json) => AnimeListM
     );
 
 Map<String, dynamic> _$AnimeListModelToJson(AnimeListModel instance) => <String, dynamic>{
-      'data': instance.data.map((e) => e.toJson()).toList(),
+      'data': instance.data.map((AnimeListData e) => e.toJson()).toList(),
       'paging': instance.paging.toJson(),
     };
 

@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:myanimelist_app/ui/components/app_bar/app_bar_widget.dart';
-import 'package:myanimelist_app/ui/components/navigation/bottom_navi_bar_widget.dart';
+import '../../components/app_bar/app_bar_widget.dart';
+import '../../components/navigation/bottom_navi_bar_widget.dart';
 
 import '../../theme/app_text_theme.dart';
 
@@ -15,16 +15,16 @@ class AnimeScreen extends ConsumerStatefulWidget {
 }
 
 class _AnimeScreenState extends ConsumerState<AnimeScreen> {
-  final String _query = "";
+  final String _query = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(),
+      appBar: const AppBarWidget(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
             Text(
               'ANIME LIST',
               style: AppTextTheme().h1.copyWith(height: 1, color: Colors.white),

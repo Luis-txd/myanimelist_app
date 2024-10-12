@@ -1,11 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:myanimelist_app/data/models/anime/anime_list.dart';
-import 'package:myanimelist_app/data/models/common/common.dart';
-import 'package:myanimelist_app/resources/app_colours.dart';
-import 'package:myanimelist_app/ui/components/app_bar/app_bar_widget.dart';
-import 'package:myanimelist_app/ui/components/navigation/bottom_navi_bar_widget.dart';
+import '../../../data/models/anime/anime_list.dart';
+import '../../../data/models/common/common.dart';
+import '../../components/app_bar/app_bar_widget.dart';
+import '../../components/navigation/bottom_navi_bar_widget.dart';
 
 import '../../theme/app_text_theme.dart';
 
@@ -38,28 +37,28 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   // Ves manga? Se nao, nao aparece menu do Manga lg na nav bar > aparece apenas na grelha
   // Usas Forum/Hub? Se nao, nao aparece > aparece apenas na grelha
 
-  List<AnimeListData> nodes = [
+  List<AnimeListData> nodes = <AnimeListData>[
     AnimeListData(
         node: AnimeListNode(
             id: 21,
-            title: "One Piece",
+            title: 'One Piece',
             mainPicture: MainPicture(
-                medium: "https://cdn.myanimelist.net/images/anime/1244/138851.jpg",
-                large: "https://cdn.myanimelist.net/images/anime/1244/138851l.jpg"))),
+                medium: 'https://cdn.myanimelist.net/images/anime/1244/138851.jpg',
+                large: 'https://cdn.myanimelist.net/images/anime/1244/138851l.jpg'))),
     AnimeListData(
         node: AnimeListNode(
             id: 31772,
-            title: "One Punch Man",
+            title: 'One Punch Man',
             mainPicture: MainPicture(
-                medium: "https://cdn.myanimelist.net/images/anime/1452/97840.jpg",
-                large: "https://cdn.myanimelist.net/images/anime/1452/97840l.jpg"))),
+                medium: 'https://cdn.myanimelist.net/images/anime/1452/97840.jpg',
+                large: 'https://cdn.myanimelist.net/images/anime/1452/97840l.jpg'))),
     AnimeListData(
         node: AnimeListNode(
             id: 459,
-            title: "One Piece Movie 1",
+            title: 'One Piece Movie 1',
             mainPicture: MainPicture(
-                medium: "https://cdn.myanimelist.net/images/anime/1770/97704.jpg",
-                large: "https://cdn.myanimelist.net/images/anime/1770/97704l.jpg"))),
+                medium: 'https://cdn.myanimelist.net/images/anime/1770/97704.jpg',
+                large: 'https://cdn.myanimelist.net/images/anime/1770/97704l.jpg'))),
   ];
 
   @override
@@ -71,13 +70,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBarWidget(),
+      appBar: const AppBarWidget(),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
             Text(
               'HOMESCREEN',
               style: AppTextTheme().h1.copyWith(height: 1, color: Colors.white),
@@ -85,17 +84,17 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             Expanded(
               child: ListView.builder(
                 itemCount: nodes.length,
-                itemBuilder: (context, index) {
-                  final item = nodes[index];
+                itemBuilder: (BuildContext context, int index) {
+                  final AnimeListData item = nodes[index];
                   return Row(
-                    children: [
+                    children: <Widget>[
                       Image.network(
                         item.node.mainPicture.large,
                         height: 100,
                         cacheHeight: 100,
                       ),
                       Column(
-                        children: [
+                        children: <Widget>[
                           Text(
                             item.node.title,
                             style: AppTextTheme().bodyNormal.copyWith(height: 1, color: Colors.white),

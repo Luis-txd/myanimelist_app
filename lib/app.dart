@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:myanimelist_app/resources/app_colours.dart';
-import 'package:myanimelist_app/routes/router.dart';
+import 'resources/app_colours.dart';
+import 'routes/router.dart';
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  final _appRouter = AppRouter();
+  final AppRouter _appRouter = AppRouter();
 
   // This widget is the root of your application.
   @override
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       ),
       routeInformationParser: _appRouter.defaultRouteParser(),
       routerDelegate: _appRouter.delegate(),
-      builder: (context, child) => child!,
+      builder: (BuildContext context, Widget? child) => child!,
       debugShowCheckedModeBanner: false,
     );
   }

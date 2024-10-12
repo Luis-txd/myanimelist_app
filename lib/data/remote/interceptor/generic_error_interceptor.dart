@@ -2,12 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class GenericErrorInterceptor extends QueuedInterceptor {
-  static late BuildContext _context;
-  static GenericErrorInterceptor? _instance;
-
   GenericErrorInterceptor._(BuildContext context) {
     _context = context;
   }
+  static late BuildContext _context;
+  static GenericErrorInterceptor? _instance;
 
   static void initialize(BuildContext context) {
     _instance ??= GenericErrorInterceptor._(context);

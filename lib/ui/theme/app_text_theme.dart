@@ -1,43 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:myanimelist_app/ui/theme/font_size.dart';
+import 'font_size.dart';
 
 class AppTextTheme {
-  final TextStyle h1;
-  final TextStyle h2;
-  final TextStyle h3;
-  final TextStyle h4;
-  final TextStyle bottomNavBar;
-  final TextStyle bodyNormal;
-  final TextStyle label;
-  final TextStyle highlight;
-  final TextStyle btnMain;
-  final TextStyle btnSmall;
-  final TextStyle menuItem;
-  final TextStyle mobileNavbar;
-  final TextStyle mobileNavbarTitle;
-  final TextStyle bodyNormalBold;
-  final TextStyle bodyLarge;
-  final TextStyle bodyLargeBold;
-
-  const AppTextTheme._({
-    required this.h1,
-    required this.h2,
-    required this.h3,
-    required this.h4,
-    required this.bottomNavBar,
-    required this.bodyNormal,
-    required this.label,
-    required this.highlight,
-    required this.btnMain,
-    required this.btnSmall,
-    required this.menuItem,
-    required this.mobileNavbar,
-    required this.mobileNavbarTitle,
-    required this.bodyNormalBold,
-    required this.bodyLarge,
-    required this.bodyLargeBold,
-  });
-
   factory AppTextTheme() {
     return const AppTextTheme._(
       h1: TextStyle(
@@ -153,4 +117,39 @@ class AppTextTheme {
       ),
     );
   }
+
+  const AppTextTheme._({
+    required this.h1,
+    required this.h2,
+    required this.h3,
+    required this.h4,
+    required this.bottomNavBar,
+    required this.bodyNormal,
+    required this.label,
+    required this.highlight,
+    required this.btnMain,
+    required this.btnSmall,
+    required this.menuItem,
+    required this.mobileNavbar,
+    required this.mobileNavbarTitle,
+    required this.bodyNormalBold,
+    required this.bodyLarge,
+    required this.bodyLargeBold,
+  });
+  final TextStyle h1;
+  final TextStyle h2;
+  final TextStyle h3;
+  final TextStyle h4;
+  final TextStyle bottomNavBar;
+  final TextStyle bodyNormal;
+  final TextStyle label;
+  final TextStyle highlight;
+  final TextStyle btnMain;
+  final TextStyle btnSmall;
+  final TextStyle menuItem;
+  final TextStyle mobileNavbar;
+  final TextStyle mobileNavbarTitle;
+  final TextStyle bodyNormalBold;
+  final TextStyle bodyLarge;
+  final TextStyle bodyLargeBold;
 }

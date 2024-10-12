@@ -1,5 +1,5 @@
 class StringResource {
-  String APP_VERSION = "0.0.1";
+  String APP_VERSION = '0.0.1';
 
-  static const String APP_NAME = "";
+  static const String APP_NAME = '';
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myanimelist_app/resources/app_colours.dart';
+import '../../../resources/app_colours.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const AppBarWidget({super.key, this.title});
@@ -16,7 +16,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       leading: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
-          decoration: BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
+          decoration: const BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
           child: IconButton(
               //TODO text button com texto a dizer Menu, sem background?
               onPressed: () {
@@ -25,11 +25,11 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
               icon: Icon(Icons.apps, color: AppColors().iconPrimary01)),
         ),
       ),
-      actions: [
+      actions: <Widget>[
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
-            decoration: BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
+            decoration: const BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
             child: IconButton(
                 onPressed: () {
                   //TODO send to profile page

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:myanimelist_app/data/remote/interceptor/generic_error_interceptor.dart';
-import 'package:myanimelist_app/routes/router.gr.dart';
+import '../../../data/remote/interceptor/generic_error_interceptor.dart';
+import '../../../routes/router.gr.dart';
 
 @RoutePage()
 class SplashScreen extends ConsumerStatefulWidget {
@@ -19,7 +19,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   void initState() {
     super.initState();
     GenericErrorInterceptor.initialize(context);
-    WidgetsBinding.instance.addPostFrameCallback((timestamp) {
+    WidgetsBinding.instance.addPostFrameCallback((Duration timestamp) {
       _loadData();
     });
   }
@@ -37,11 +37,11 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   Future<void> _proceed() async {
     FlutterNativeSplash.remove();
     //TODO auth validation, send to auth screen if user not logged in
-    context.router.replaceAll([const HomeScreen()]);
+    context.router.replaceAll(<PageRouteInfo>[const HomeScreen()]);
   }
 
-  void _checkConnectivity() async {
-    bool result = await InternetConnectionChecker().hasConnection;
+  Future<void> _checkConnectivity() async {
+    final bool result = await InternetConnectionChecker().hasConnection;
     if (result) {
       _proceed();
     } else {
