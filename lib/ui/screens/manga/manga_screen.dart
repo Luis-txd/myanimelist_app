@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:myanimelist_app/resources/app_colours.dart';
+import 'package:myanimelist_app/ui/components/app_bar/app_bar_widget.dart';
 import 'package:myanimelist_app/ui/components/navigation/bottom_navi_bar_widget.dart';
 
 import '../../theme/app_text_theme.dart';
@@ -17,7 +18,7 @@ class MangaScreen extends ConsumerStatefulWidget {
 class _MangaScreenState extends ConsumerState<MangaScreen> {
   final String _query = "";
 
-   @override
+  @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
@@ -26,34 +27,7 @@ class _MangaScreenState extends ConsumerState<MangaScreen> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors().backgroundPrimary01,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            decoration: BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
-            child: IconButton(
-                //TODO text button com texto a dizer Menu, sem background?
-                onPressed: () {
-                  //TODO send to profile page
-                },
-                icon: Icon(Icons.apps, color: AppColors().iconPrimary01)),
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              decoration: BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
-              child: IconButton(
-                  onPressed: () {
-                    //TODO send to profile page
-                  },
-                  icon: Icon(Icons.person, color: AppColors().iconPrimary01)),
-            ),
-          ),
-        ],
-      ),
+      appBar: AppBarWidget(),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.

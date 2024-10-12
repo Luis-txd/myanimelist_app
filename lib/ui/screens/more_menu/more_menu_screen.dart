@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:myanimelist_app/resources/app_colours.dart';
 import 'package:myanimelist_app/ui/components/navigation/bottom_navi_bar_widget.dart';
 
 import '../../theme/app_text_theme.dart';
@@ -17,7 +16,7 @@ class MoreMenuScreen extends ConsumerStatefulWidget {
 class _MoreMenuScreenState extends ConsumerState<MoreMenuScreen> {
   final String _query = "";
 
-   @override
+  @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.

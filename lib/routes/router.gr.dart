@@ -12,11 +12,9 @@ import 'package:auto_route/auto_route.dart' as _i7;
 import 'package:myanimelist_app/ui/screens/anime/anime_screen.dart' as _i1;
 import 'package:myanimelist_app/ui/screens/home/home_screen.dart' as _i2;
 import 'package:myanimelist_app/ui/screens/manga/manga_screen.dart' as _i3;
-import 'package:myanimelist_app/ui/screens/more_menu/more_menu_screen.dart'
-    as _i4;
+import 'package:myanimelist_app/ui/screens/more_menu/more_menu_screen.dart' as _i4;
 import 'package:myanimelist_app/ui/screens/search/search_screen.dart' as _i5;
-import 'package:myanimelist_app/ui/screens/splashscreen/splash_screen.dart'
-    as _i6;
+import 'package:myanimelist_app/ui/screens/splashscreen/splash_screen.dart' as _i6;
 
 abstract class $AppRouter extends _i7.RootStackRouter {
   $AppRouter({super.navigatorKey});

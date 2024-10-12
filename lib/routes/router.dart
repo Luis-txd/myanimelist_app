@@ -40,6 +40,5 @@ class AppRouter extends $AppRouter {
       page: MoreMenuScreen.page,
       initial: false,
     ),
-    
   ];
 }
