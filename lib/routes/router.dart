@@ -25,5 +25,21 @@ class AppRouter extends $AppRouter {
       page: SearchScreen.page,
       initial: false,
     ),
+    AutoRoute(
+      path: "/manga",
+      page: MangaScreen.page,
+      initial: false,
+    ),
+    AutoRoute(
+      path: "/anime",
+      page: AnimeScreen.page,
+      initial: false,
+    ),
+    AutoRoute(
+      path: "/gridmenu",
+      page: MoreMenuScreen.page,
+      initial: false,
+    ),
+    
   ];
 }

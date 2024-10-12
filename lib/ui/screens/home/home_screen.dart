@@ -43,28 +43,22 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             id: 21,
             title: "One Piece",
             mainPicture: MainPicture(
-                medium:
-                    "https://cdn.myanimelist.net/images/anime/1244/138851.jpg",
-                large:
-                    "https://cdn.myanimelist.net/images/anime/1244/138851l.jpg"))),
+                medium: "https://cdn.myanimelist.net/images/anime/1244/138851.jpg",
+                large: "https://cdn.myanimelist.net/images/anime/1244/138851l.jpg"))),
     AnimeListData(
         node: AnimeListNode(
             id: 31772,
             title: "One Punch Man",
             mainPicture: MainPicture(
-                medium:
-                    "https://cdn.myanimelist.net/images/anime/1452/97840.jpg",
-                large:
-                    "https://cdn.myanimelist.net/images/anime/1452/97840l.jpg"))),
+                medium: "https://cdn.myanimelist.net/images/anime/1452/97840.jpg",
+                large: "https://cdn.myanimelist.net/images/anime/1452/97840l.jpg"))),
     AnimeListData(
         node: AnimeListNode(
             id: 459,
             title: "One Piece Movie 1",
             mainPicture: MainPicture(
-                medium:
-                    "https://cdn.myanimelist.net/images/anime/1770/97704.jpg",
-                large:
-                    "https://cdn.myanimelist.net/images/anime/1770/97704l.jpg"))),
+                medium: "https://cdn.myanimelist.net/images/anime/1770/97704.jpg",
+                large: "https://cdn.myanimelist.net/images/anime/1770/97704l.jpg"))),
   ];
 
   @override
@@ -81,8 +75,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
-            decoration:
-                BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
+            decoration: BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
             child: IconButton(
                 //TODO text button com texto a dizer Menu, sem background?
                 onPressed: () {
@@ -95,8 +88,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              decoration:
-                  BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
+              decoration: BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
               child: IconButton(
                   onPressed: () {
                     //TODO send to profile page
@@ -132,9 +124,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         children: [
                           Text(
                             item.node.title,
-                            style: AppTextTheme()
-                                .bodyNormal
-                                .copyWith(height: 1, color: Colors.white),
+                            style: AppTextTheme().bodyNormal.copyWith(height: 1, color: Colors.white),
                           ),
                           // SizedBox(width: 10),
                           // Text(
@@ -153,9 +143,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNaviBar(
-          selectedIndex:
-              0), // This trailing comma makes auto-formatting nicer for build methods.
+      bottomNavigationBar:
+          const BottomNaviBar(selectedIndex: 0), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

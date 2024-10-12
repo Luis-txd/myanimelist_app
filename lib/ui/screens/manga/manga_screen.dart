@@ -7,14 +7,14 @@ import 'package:myanimelist_app/ui/components/navigation/bottom_navi_bar_widget.
 import '../../theme/app_text_theme.dart';
 
 @RoutePage()
-class SearchScreen extends ConsumerStatefulWidget {
-  const SearchScreen({super.key});
+class MangaScreen extends ConsumerStatefulWidget {
+  const MangaScreen({super.key});
 
   @override
-  ConsumerState<SearchScreen> createState() => _SearchScreenState();
+  ConsumerState<MangaScreen> createState() => _MangaScreenState();
 }
 
-class _SearchScreenState extends ConsumerState<SearchScreen> {
+class _MangaScreenState extends ConsumerState<MangaScreen> {
   final String _query = "";
 
    @override
@@ -74,12 +74,14 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'SEARCH',
+              'MANGA LIST',
               style: AppTextTheme().h1.copyWith(height: 1, color: Colors.white),
             ),
           ],
         ),
       ),
+      bottomNavigationBar:
+          const BottomNaviBar(selectedIndex: 2), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

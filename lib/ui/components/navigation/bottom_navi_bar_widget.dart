@@ -20,34 +20,32 @@ class BottomNaviBar extends ConsumerStatefulWidget {
 class _BottomNaviBarState extends ConsumerState<BottomNaviBar> {
   @override
   Widget build(BuildContext context) {
-    double containerHeight = Platform.isAndroid ? 70 : 80;
+    double containerHeight = Platform.isAndroid ? 70 : 85;
     return Container(
       height: containerHeight,
       color: AppColors().naviUnselected01,
       child: Row(
         children: [
-          buildBottomNaviButton(
-              widget.selectedIndex, "Home", context, 0, containerHeight, () {
+          buildBottomNaviButton(widget.selectedIndex, "Home", context, 0, containerHeight, () {
             if (widget.selectedIndex != 0) {
               context.router.replace(const HomeScreen());
             }
           }, Icons.home),
-          buildBottomNaviButton(
-              widget.selectedIndex, "Anime", context, 1, containerHeight, () {
+          buildBottomNaviButton(widget.selectedIndex, "Anime", context, 1, containerHeight, () {
             if (widget.selectedIndex != 1) {
-              context.router.replace(const SearchScreen());
+              context.router.replace(const AnimeScreen());
             }
           }, Icons.tv),
-          buildBottomNaviButton(
-              widget.selectedIndex, "Manga", context, 2, containerHeight, () {
+          buildBottomNaviButton(widget.selectedIndex, "Manga", context, 2, containerHeight, () {
             if (widget.selectedIndex != 2) {
               // Route push to correct screen
+              context.router.replace(const MangaScreen());
             }
           }, Icons.import_contacts),
-          buildBottomNaviButton(
-              widget.selectedIndex, "More", context, 3, containerHeight, () {
+          buildBottomNaviButton(widget.selectedIndex, "More", context, 3, containerHeight, () {
             if (widget.selectedIndex != 3) {
               // Route push to correct screen
+              context.router.replace(const MoreMenuScreen());
             }
           }, Icons.grid_view)
         ],
@@ -55,14 +53,8 @@ class _BottomNaviBarState extends ConsumerState<BottomNaviBar> {
     );
   }
 
-  Widget buildBottomNaviButton(
-      int selectedIndex,
-      String text,
-      BuildContext context,
-      int position,
-      double containerHeight,
-      VoidCallback onClick,
-      IconData icon) {
+  Widget buildBottomNaviButton(int selectedIndex, String text, BuildContext context, int position,
+      double containerHeight, VoidCallback onClick, IconData icon) {
     double itemWidth = MediaQuery.of(context).size.width / 4;
     bool isSelected = position == selectedIndex;
     // icon, padding text
@@ -73,7 +65,7 @@ class _BottomNaviBarState extends ConsumerState<BottomNaviBar> {
         height: containerHeight,
         color: isSelected ? AppColors().naviSelected01 : Colors.transparent,
         child: Padding(
-          padding: EdgeInsets.only(bottom: Platform.isAndroid ? 6 : 14, top: 8),
+          padding: EdgeInsets.only(bottom: Platform.isAndroid ? 6 : 12, top: Platform.isAndroid ? 8 : 10),
           child: Column(
             children: [
               Icon(
@@ -88,10 +80,9 @@ class _BottomNaviBarState extends ConsumerState<BottomNaviBar> {
                   text,
                   maxLines: 2,
                   textAlign: TextAlign.center,
-                  style: AppTextTheme().bottomNavBar.copyWith(
-                      height: 1,
-                      color: AppColors()
-                          .iconPrimary01), //TODO create new style for text color
+                  style: AppTextTheme()
+                      .bottomNavBar
+                      .copyWith(height: 1, color: AppColors().iconPrimary01), //TODO create new style for text color
                 ),
               ),
             ],

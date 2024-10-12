@@ -7,14 +7,14 @@ import 'package:myanimelist_app/ui/components/navigation/bottom_navi_bar_widget.
 import '../../theme/app_text_theme.dart';
 
 @RoutePage()
-class SearchScreen extends ConsumerStatefulWidget {
-  const SearchScreen({super.key});
+class MoreMenuScreen extends ConsumerStatefulWidget {
+  const MoreMenuScreen({super.key});
 
   @override
-  ConsumerState<SearchScreen> createState() => _SearchScreenState();
+  ConsumerState<MoreMenuScreen> createState() => _MoreMenuScreenState();
 }
 
-class _SearchScreenState extends ConsumerState<SearchScreen> {
+class _MoreMenuScreenState extends ConsumerState<MoreMenuScreen> {
   final String _query = "";
 
    @override
@@ -26,34 +26,6 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors().backgroundPrimary01,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            decoration: BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
-            child: IconButton(
-                //TODO text button com texto a dizer Menu, sem background?
-                onPressed: () {
-                  //TODO send to profile page
-                },
-                icon: Icon(Icons.apps, color: AppColors().iconPrimary01)),
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              decoration: BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
-              child: IconButton(
-                  onPressed: () {
-                    //TODO send to profile page
-                  },
-                  icon: Icon(Icons.person, color: AppColors().iconPrimary01)),
-            ),
-          ),
-        ],
-      ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -74,12 +46,14 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'SEARCH',
+              'GRID MENU',
               style: AppTextTheme().h1.copyWith(height: 1, color: Colors.white),
             ),
           ],
         ),
       ),
+      bottomNavigationBar:
+          const BottomNaviBar(selectedIndex: 3), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
