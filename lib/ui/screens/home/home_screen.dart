@@ -30,6 +30,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     });
   }
 
+  // Home screen = Seasonal + Search Oage, com search bar
+  // search e hub viram pags independentes de anime e manga
+  // default state == planeed !!!!!! URGENTE !!!!!!
+  // BttomVanBar customizable com pop quizz
+  // Ves manga? Se nao, nao aparece menu do Manga lg na nav bar > aparece apenas na grelha
+  // Usas Forum/Hub? Se nao, nao aparece > aparece apenas na grelha
+
   List<AnimeListData> nodes = [
     AnimeListData(
         node: AnimeListNode(
