@@ -15,8 +15,6 @@ class MoreMenuScreen extends ConsumerStatefulWidget {
 }
 
 class _MoreMenuScreenState extends ConsumerState<MoreMenuScreen> {
-  final String _query = '';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

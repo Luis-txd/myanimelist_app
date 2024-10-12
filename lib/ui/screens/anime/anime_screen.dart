@@ -15,8 +15,6 @@ class AnimeScreen extends ConsumerStatefulWidget {
 }
 
 class _AnimeScreenState extends ConsumerState<AnimeScreen> {
-  final String _query = '';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
