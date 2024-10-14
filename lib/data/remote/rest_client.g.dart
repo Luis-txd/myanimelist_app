@@ -27,15 +27,15 @@ class _RestClient implements RestClient {
     int offset = 4,
     String q = 'one',
   }) async {
-    final Map<String, dynamic> _extra = <String, dynamic>{};
-    final Map<String, dynamic> queryParameters = <String, dynamic>{
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
       r'limit': limit,
       r'offset': offset,
       r'q': q,
     };
-    final Map<String, dynamic> _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final RequestOptions _options = _setStreamType<AnimeListModel>(Options(
+    final _options = _setStreamType<AnimeListModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -44,13 +44,14 @@ class _RestClient implements RestClient {
           _dio.options,
           'v2/anime',
           queryParameters: queryParameters,
+          data: _data,
         )
         .copyWith(
             baseUrl: _combineBaseUrls(
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final Response<Map<String, dynamic>> _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late AnimeListModel _value;
     try {
       _value = AnimeListModel.fromJson(_result.data!);
@@ -63,11 +64,11 @@ class _RestClient implements RestClient {
 
   @override
   Future<AnimeDetail> getAnimeDetail(int animeId) async {
-    final Map<String, dynamic> _extra = <String, dynamic>{};
-    final Map<String, dynamic> queryParameters = <String, dynamic>{};
-    final Map<String, dynamic> _headers = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final RequestOptions _options = _setStreamType<AnimeDetail>(Options(
+    final _options = _setStreamType<AnimeDetail>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -76,13 +77,14 @@ class _RestClient implements RestClient {
           _dio.options,
           'v2/anime/${animeId}',
           queryParameters: queryParameters,
+          data: _data,
         )
         .copyWith(
             baseUrl: _combineBaseUrls(
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final Response<Map<String, dynamic>> _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late AnimeDetail _value;
     try {
       _value = AnimeDetail.fromJson(_result.data!);
@@ -113,7 +115,7 @@ class _RestClient implements RestClient {
       return dioBaseUrl;
     }
 
-    final Uri url = Uri.parse(baseUrl);
+    final url = Uri.parse(baseUrl);
 
     if (url.isAbsolute) {
       return url.toString();

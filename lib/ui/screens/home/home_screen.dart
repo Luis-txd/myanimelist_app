@@ -95,8 +95,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ],
         ),
       ),
-      bottomNavigationBar:
-          const BottomNaviBar(selectedIndex: 0),
+      bottomNavigationBar: const BottomNaviBar(selectedIndex: 0),
     );
   }
 }

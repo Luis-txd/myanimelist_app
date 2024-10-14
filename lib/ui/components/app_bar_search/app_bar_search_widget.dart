@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 
 import '../../../resources/app_colours.dart';
 import '../../../routes/router.gr.dart';
+import '../app_bar/app_bar_widget.dart';
 
-class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarWidget({super.key, this.title});
+class AppBarSearchWidget extends AppBarWidget {
+  const AppBarSearchWidget({super.key});
 
-  final String? title;
+  // final String? title;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);

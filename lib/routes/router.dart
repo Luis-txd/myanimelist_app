@@ -35,5 +35,9 @@ class AppRouter extends $AppRouter {
       path: '/gridmenu',
       page: MoreMenuScreen.page,
     ),
+    AutoRoute(
+      path: '/profile',
+      page: ProfileScreen.page,
+    ),
   ];
 }

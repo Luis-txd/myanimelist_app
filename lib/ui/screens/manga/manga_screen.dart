@@ -30,8 +30,7 @@ class _MangaScreenState extends ConsumerState<MangaScreen> {
           ],
         ),
       ),
-      bottomNavigationBar:
-          const BottomNaviBar(selectedIndex: 2), 
+      bottomNavigationBar: const BottomNaviBar(selectedIndex: 2),
     );
   }
 }
