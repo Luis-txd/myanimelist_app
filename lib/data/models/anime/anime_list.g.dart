@@ -22,7 +22,7 @@ Map<String, dynamic> _$AnimeListModelToJson(AnimeListModel instance) =>
 
 AnimeListData _$AnimeListDataFromJson(Map<String, dynamic> json) =>
     AnimeListData(
-      node: AnimeListNode.fromJson(json['node'] as Map<String, dynamic>),
+      node: AnimeNode.fromJson(json['node'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$AnimeListDataToJson(AnimeListData instance) =>

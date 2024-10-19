@@ -149,7 +149,7 @@ class Recommendation {
   });
 
   factory Recommendation.fromJson(Map<String, dynamic> json) => _$RecommendationFromJson(json);
-  AnimeListNode node;
+  AnimeNode node;
   int numRecommendations;
 
   Map<String, dynamic> toJson() => _$RecommendationToJson(this);
@@ -164,7 +164,7 @@ class RelatedAnime {
   });
 
   factory RelatedAnime.fromJson(Map<String, dynamic> json) => _$RelatedAnimeFromJson(json);
-  AnimeListNode node;
+  AnimeNode node;
   String relationType;
   String relationTypeFormatted;
 

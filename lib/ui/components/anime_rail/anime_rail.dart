@@ -19,16 +19,16 @@ class _AnimeRailState extends ConsumerState<AnimeRail> {
   static const double kDefaultItemWidth = 110.0;
   static const double kDefaultItemHeight = 165.0;
 
-  Widget buildAnimeRailItem(BuildContext context, AnimeListNode node) {
+  Widget buildAnimeRailItem(BuildContext context, AnimeNode node) {
     return GestureDetector(
       onTap: () {},
-      child: Card(
+      child: node.main_picture!= null ? Card(
         color: Colors.transparent,
         shadowColor: Colors.transparent,
         child: Column(
           children: <Widget>[
             Image.network(
-              node.main_picture.large,
+              node.main_picture!.medium,
               height: kDefaultItemHeight,
               width: kDefaultItemWidth,
               cacheHeight: kDefaultItemHeight.truncate(),
@@ -47,7 +47,7 @@ class _AnimeRailState extends ConsumerState<AnimeRail> {
             ),
           ],
         ),
-      ),
+      ) : Container(),
     );
   }
 
