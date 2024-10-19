@@ -16,16 +16,51 @@ class AnimeRail extends ConsumerStatefulWidget {
 }
 
 class _AnimeRailState extends ConsumerState<AnimeRail> {
-  Row buildAnimeRailItem(BuildContext context, AnimeListNode node) {
-    return Row(
-      children: <Widget>[
-        Image.network(
-          node.mainPicture.large,
-          height: 150,
-          cacheHeight: 150,
+  GestureDetector buildAnimeRailItem(BuildContext context, AnimeListNode node) {
+    return GestureDetector(
+      onTap: () {},
+      child: Card(
+        child: Column(
+          children: <Widget>[
+            Image.network(
+              node.mainPicture.large,
+              height: 150,
+              cacheHeight: 150,
+            ),
+            const SizedBox(height: 10),
+            Text(
+              node.title,
+              style: AppTextTheme().bodyNormal.copyWith(height: 1, color: Colors.white),
+            ),
+          ],
         ),
-      ],
+      ),
     );
+
+    // return Row(
+    //   children: <Widget>[
+
+    //     SizedBox(
+    //       width: 210,
+    //       child: ListTile(
+    //         title: Text(
+    //           node.title,
+    //           style: AppTextTheme().bodyNormal.copyWith(height: 1, color: Colors.white),
+    //         ),
+    //         leading: Image.network(
+    //           node.mainPicture.large,
+    //           height: 150,
+    //           cacheHeight: 150,
+    //         ),
+    //         onTap: () {},
+    //         subtitle: Text(
+    //           'node.title',
+    //           style: AppTextTheme().bodyNormal.copyWith(height: 1, color: Colors.white),
+    //         ),
+    //       ),
+    //     ),
+    //   ],
+    // );
   }
 
   @override

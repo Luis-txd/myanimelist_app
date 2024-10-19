@@ -9,4 +9,21 @@ My List (toggle entre Anime/manga, Tab entre os diversos estados > Plan to Watch
 Notifications Hub (Slide Over window)
 
 Settings 
-Profile
+Profiles
+
+
+# Features
+Long press to open a preview of the forum post
+Long press to open a preview of the anime/manga
+Slide a comment to reply/quote
+Slide over an anime/manga to quickly add to a list
+Tema/Icon/Navigation Menu customizavel
+Sorting anime
+Interactive Tutorials
+Anime/Manga stats
+Editar facilmente o progresso na listagem de Anime/Manga
+
+
+# Exemplos:
+https://moelist.net
+https://github.com/axiel7/AniHyou-android
