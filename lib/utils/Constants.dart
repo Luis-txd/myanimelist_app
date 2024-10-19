@@ -7,8 +7,5 @@ const Map<String, List<int>> seasonMonths = <String, List<int>>{
   'fall': <int>[DateTime.october, DateTime.november, DateTime.december],
 };
 
-// seasonMonths['winter']?.forEach((month) {
-//     // Format the integer month to a readable string
-//     String monthName = DateFormat.MMMM().format(DateTime(0, month));
-//     print(monthName);
-//   });
+const double kDefaultImageWidth = 110.0;
+const double kDefaultImageHeight = 160.0;

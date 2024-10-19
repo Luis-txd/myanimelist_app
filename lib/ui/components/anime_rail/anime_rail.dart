@@ -16,81 +16,78 @@ class AnimeRail extends ConsumerStatefulWidget {
 }
 
 class _AnimeRailState extends ConsumerState<AnimeRail> {
-  GestureDetector buildAnimeRailItem(BuildContext context, AnimeListNode node) {
+  static const double kDefaultItemWidth = 110.0;
+  static const double kDefaultItemHeight = 165.0;
+
+  Widget buildAnimeRailItem(BuildContext context, AnimeListNode node) {
     return GestureDetector(
       onTap: () {},
       child: Card(
+        color: Colors.transparent,
+        shadowColor: Colors.transparent,
         child: Column(
           children: <Widget>[
             Image.network(
               node.mainPicture.large,
-              height: 150,
-              cacheHeight: 150,
+              height: kDefaultItemHeight,
+              width: kDefaultItemWidth,
+              cacheHeight: kDefaultItemHeight.truncate(),
+              cacheWidth: kDefaultItemWidth.truncate(),
             ),
-            const SizedBox(height: 10),
-            Text(
-              node.title,
-              style: AppTextTheme().bodyNormal.copyWith(height: 1, color: Colors.white),
+            const SizedBox(height: 8),
+            SizedBox(
+              width: kDefaultItemWidth,
+              child: Text(
+                node.title,
+                style: AppTextTheme().bodySmall.copyWith(height: 1, color: Colors.white),
+                softWrap: false,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+              ),
             ),
           ],
         ),
       ),
     );
-
-    // return Row(
-    //   children: <Widget>[
-
-    //     SizedBox(
-    //       width: 210,
-    //       child: ListTile(
-    //         title: Text(
-    //           node.title,
-    //           style: AppTextTheme().bodyNormal.copyWith(height: 1, color: Colors.white),
-    //         ),
-    //         leading: Image.network(
-    //           node.mainPicture.large,
-    //           height: 150,
-    //           cacheHeight: 150,
-    //         ),
-    //         onTap: () {},
-    //         subtitle: Text(
-    //           'node.title',
-    //           style: AppTextTheme().bodyNormal.copyWith(height: 1, color: Colors.white),
-    //         ),
-    //       ),
-    //     ),
-    //   ],
-    // );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Text(
-          widget.title,
-          style: AppTextTheme().h3.copyWith(height: 1, color: Colors.white),
-        ),
-        if (widget.nodes.isEmpty)
-          Container()
-        else
-          SizedBox(
-            height: 200,
-            child: ListView.separated(
-              itemCount: widget.nodes.length,
-              itemBuilder: (BuildContext context, int index) {
-                final AnimeListData item = widget.nodes[index];
-                return buildAnimeRailItem(context, item.node);
-              },
-              scrollDirection: Axis.horizontal,
-              separatorBuilder: (BuildContext context, int index) {
-                return const SizedBox(
-                  width: 8,
-                );
-              },
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 2.0),
+      child: Column(
+        children: <Widget>[
+          Padding( // Rail Title
+            padding: const EdgeInsets.only(left: 5.0, bottom: 3.0),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                widget.title,
+                style: AppTextTheme().h5.copyWith(height: 1, color: Colors.white),
+              ),
             ),
           ),
-      ],
+          if (widget.nodes.isEmpty)
+            Container() // TODO(luistxd): isto deve ser a nivel do rail, e nao dos rail items
+          else
+            SizedBox(
+              height: 220,
+              child: ListView.separated(
+                itemCount: widget.nodes.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final AnimeListData item = widget.nodes[index];
+                  return buildAnimeRailItem(context, item.node);
+                },
+                scrollDirection: Axis.horizontal,
+                separatorBuilder: (BuildContext context, int index) {
+                  return const SizedBox(
+                    width: 5.0,
+                  );
+                },
+              ),
+            ),
+        ],
+      ),
     );
   }
 }
