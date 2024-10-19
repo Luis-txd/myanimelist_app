@@ -3,7 +3,6 @@ import 'package:json_annotation/json_annotation.dart';
 import '../user/user.dart';
 part 'common.g.dart';
 
-
 @JsonSerializable(explicitToJson: true)
 class AnimeNode {
   AnimeNode({

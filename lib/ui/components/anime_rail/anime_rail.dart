@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../data/models/anime/anime_list.dart';
 import '../../../data/models/common/common.dart';
 import '../../theme/app_text_theme.dart';
 
@@ -22,32 +21,34 @@ class _AnimeRailState extends ConsumerState<AnimeRail> {
   Widget buildAnimeRailItem(BuildContext context, AnimeNode node) {
     return GestureDetector(
       onTap: () {},
-      child: node.main_picture!= null ? Card(
-        color: Colors.transparent,
-        shadowColor: Colors.transparent,
-        child: Column(
-          children: <Widget>[
-            Image.network(
-              node.main_picture!.medium,
-              height: kDefaultItemHeight,
-              width: kDefaultItemWidth,
-              cacheHeight: kDefaultItemHeight.truncate(),
-              cacheWidth: kDefaultItemWidth.truncate(),
-            ),
-            const SizedBox(height: 8),
-            SizedBox(
-              width: kDefaultItemWidth,
-              child: Text(
-                node.title,
-                style: AppTextTheme().bodySmall.copyWith(height: 1, color: Colors.white),
-                softWrap: false,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
+      child: node.main_picture != null
+          ? Card(
+              color: Colors.transparent,
+              shadowColor: Colors.transparent,
+              child: Column(
+                children: <Widget>[
+                  Image.network(
+                    node.main_picture!.medium,
+                    height: kDefaultItemHeight,
+                    width: kDefaultItemWidth,
+                    cacheHeight: kDefaultItemHeight.truncate(),
+                    cacheWidth: kDefaultItemWidth.truncate(),
+                  ),
+                  const SizedBox(height: 8),
+                  SizedBox(
+                    width: kDefaultItemWidth,
+                    child: Text(
+                      node.title,
+                      style: AppTextTheme().bodySmall.copyWith(height: 1, color: Colors.white),
+                      softWrap: false,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
-      ) : Container(),
+            )
+          : Container(),
     );
   }
 

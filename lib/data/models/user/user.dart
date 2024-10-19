@@ -52,6 +52,5 @@ class UserMyListStatus {
   List<String> tags;
   DateTime updated_at;
 
-
   Map<String, dynamic> toJson() => _$UserMyListStatusToJson(this);
 }
