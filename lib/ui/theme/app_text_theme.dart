@@ -59,7 +59,7 @@ class AppTextTheme {
         fontFamily: 'SourceSansPro',
       ),
       bodySmall: TextStyle(
-        fontSize: FontSize.pt16,
+        fontSize: FontSize.pt14,
         letterSpacing: 0,
         fontWeight: FontWeight.normal,
         leadingDistribution: TextLeadingDistribution.even,

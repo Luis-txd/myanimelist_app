@@ -1,5 +1,3 @@
-
-
 String getMonthName(int index) {
   // seasonMonths['winter']?.forEach((month) {
 //     // Format the integer month to a readable string

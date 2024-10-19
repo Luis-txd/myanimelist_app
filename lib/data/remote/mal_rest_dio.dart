@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
+import '../../utils/Constants.dart';
 import 'rest_client.dart';
 
 final Provider<Dio> dioProvider = Provider<Dio>((ProviderRef<Dio> ref) {
@@ -16,6 +17,7 @@ final Provider<Dio> dioProvider = Provider<Dio>((ProviderRef<Dio> ref) {
       receiveDataWhenStatusError: true,
       headers: <String, String>{
         HttpHeaders.acceptHeader: 'application/json',
+        'X-MAL-CLIENT-ID': malClientKey,
       },
     ),
   );
@@ -47,21 +49,7 @@ final Provider<Dio> dioProvider = Provider<Dio>((ProviderRef<Dio> ref) {
   return dio;
 });
 
-//TODO
-// Create a Mock Dio provider for RestClient using the new Dio instance
-final Provider<RestClient> restClientLigaProvider = Provider<RestClient>((ProviderRef<RestClient> ref) {
+final Provider<RestClient> restClientMALProvider = Provider<RestClient>((ProviderRef<RestClient> ref) {
   final Dio dio = ref.watch(dioProvider);
-  return RestClient(dio, baseUrl: 'https://ligaportugal.dev.magycal.com/api/');
-});
-
-// Create a Mock Dio provider for RestClient using the new Dio instance
-final Provider<RestClient> restClientDioProvider = Provider<RestClient>((ProviderRef<RestClient> ref) {
-  final Dio dio = ref.watch(dioProvider);
-  return RestClient(dio, baseUrl: 'https://mocki.io/v1/');
-});
-
-// Create a Dio provider for RestClient with authorization
-final Provider<RestClient> restClientDioProviderWithAuthorization = Provider<RestClient>((ProviderRef<RestClient> ref) {
-  final Dio dio = ref.watch(dioProvider);
-  return RestClient(dio, baseUrl: 'https://magycal-ott.s3.eu-west-1.amazonaws.com/');
+  return RestClient(dio, baseUrl: 'https://api.myanimelist.net/v2/');
 });

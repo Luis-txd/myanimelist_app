@@ -14,8 +14,7 @@ UserDetail _$UserDetailFromJson(Map<String, dynamic> json) => UserDetail(
       createdAt: DateTime.parse(json['createdAt'] as String),
     );
 
-Map<String, dynamic> _$UserDetailToJson(UserDetail instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$UserDetailToJson(UserDetail instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'username': instance.username,

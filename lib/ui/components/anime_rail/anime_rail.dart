@@ -6,10 +6,10 @@ import '../../../data/models/common/common.dart';
 import '../../theme/app_text_theme.dart';
 
 class AnimeRail extends ConsumerStatefulWidget {
-  const AnimeRail({super.key, required this.title, required this.nodes});
+  const AnimeRail({super.key, required this.title, required this.item});
 
   final String title;
-  final List<AnimeListData> nodes;
+  final List<AnimeData>? item;
 
   @override
   ConsumerState<AnimeRail> createState() => _AnimeRailState();
@@ -28,7 +28,7 @@ class _AnimeRailState extends ConsumerState<AnimeRail> {
         child: Column(
           children: <Widget>[
             Image.network(
-              node.mainPicture.large,
+              node.main_picture.large,
               height: kDefaultItemHeight,
               width: kDefaultItemWidth,
               cacheHeight: kDefaultItemHeight.truncate(),
@@ -53,41 +53,58 @@ class _AnimeRailState extends ConsumerState<AnimeRail> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 2.0),
-      child: Column(
-        children: <Widget>[
-          Padding( // Rail Title
-            padding: const EdgeInsets.only(left: 5.0, bottom: 3.0),
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                widget.title,
-                style: AppTextTheme().h5.copyWith(height: 1, color: Colors.white),
-              ),
+    return widget.item != null
+        ? Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 2.0),
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  // Rail Title
+                  padding: const EdgeInsets.only(left: 5.0, bottom: 3.0),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      widget.title,
+                      style: AppTextTheme().h5.copyWith(height: 1, color: Colors.white),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 220,
+                  child: ListView.separated(
+                    itemCount: widget.item!.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final AnimeData item = widget.item![index];
+                      return buildAnimeRailItem(context, item.node);
+                    },
+                    scrollDirection: Axis.horizontal,
+                    separatorBuilder: (BuildContext context, int index) {
+                      return const SizedBox(
+                        width: 5.0,
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
-          ),
-          if (widget.nodes.isEmpty)
-            Container() // TODO(luistxd): isto deve ser a nivel do rail, e nao dos rail items
-          else
-            SizedBox(
-              height: 220,
-              child: ListView.separated(
-                itemCount: widget.nodes.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final AnimeListData item = widget.nodes[index];
-                  return buildAnimeRailItem(context, item.node);
-                },
-                scrollDirection: Axis.horizontal,
-                separatorBuilder: (BuildContext context, int index) {
-                  return const SizedBox(
-                    width: 5.0,
-                  );
-                },
-              ),
-            ),
-        ],
-      ),
-    );
+          )
+        : Expanded(
+            flex: 0,
+            child: Column(
+              children: [
+                Padding(
+                  // Rail Title
+                  padding: const EdgeInsets.only(left: 5.0, bottom: 3.0),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      widget.title,
+                      style: AppTextTheme().h5.copyWith(height: 1, color: Colors.white),
+                    ),
+                  ),
+                ),
+                const CircularProgressIndicator(),
+              ],
+            ));
   }
 }

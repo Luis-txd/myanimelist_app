@@ -12,31 +12,18 @@ class AnimeListModel {
 
   factory AnimeListModel.fromJson(Map<String, dynamic> json) => _$AnimeListModelFromJson(json);
   List<AnimeListData> data;
-  AnimeListPaging paging;
+  AnimePaging paging;
 
   Map<String, dynamic> toJson() => _$AnimeListModelToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class AnimeListData {
-  AnimeListData({
-    required this.node,
-  });
+class AnimeListData extends AnimeData {
+  AnimeListData({required super.node});
 
+  @override
   factory AnimeListData.fromJson(Map<String, dynamic> json) => _$AnimeListDataFromJson(json);
-  AnimeListNode node;
 
+  @override
   Map<String, dynamic> toJson() => _$AnimeListDataToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class AnimeListPaging {
-  AnimeListPaging({
-    required this.next,
-  });
-
-  factory AnimeListPaging.fromJson(Map<String, dynamic> json) => _$AnimeListPagingFromJson(json);
-  String next;
-
-  Map<String, dynamic> toJson() => _$AnimeListPagingToJson(this);
 }

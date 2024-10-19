@@ -23,16 +23,19 @@ class _RestClient implements RestClient {
 
   @override
   Future<AnimeListModel> getAnimeList({
-    int limit = 4,
-    int offset = 4,
-    String q = 'one',
+    int? limit = 4,
+    int? offset = 0,
+    String? q,
+    String? fields,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'limit': limit,
       r'offset': offset,
       r'q': q,
+      r'fields': fields,
     };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<AnimeListModel>(Options(
@@ -42,7 +45,7 @@ class _RestClient implements RestClient {
     )
         .compose(
           _dio.options,
-          'v2/anime',
+          'anime',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -75,7 +78,7 @@ class _RestClient implements RestClient {
     )
         .compose(
           _dio.options,
-          'v2/anime/${animeId}',
+          'anime/${animeId}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -88,6 +91,48 @@ class _RestClient implements RestClient {
     late AnimeDetail _value;
     try {
       _value = AnimeDetail.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<AnimeRankingModel> getAnimeRanking({
+    int? limit = 4,
+    int? offset = 0,
+    String? ranking_type = 'all',
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'limit': limit,
+      r'offset': offset,
+      r'ranking_type': ranking_type,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<AnimeRankingModel>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'anime/ranking',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late AnimeRankingModel _value;
+    try {
+      _value = AnimeRankingModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

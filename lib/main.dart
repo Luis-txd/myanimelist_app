@@ -13,7 +13,6 @@ void main() async {
     FlutterNativeSplash.preserve(widgetsBinding: widgetsBindings);
 
     // init sharedPres (local storage??)
-
     runApp(
       RestartWidget(
         child: ProviderScope(child: MyApp()),

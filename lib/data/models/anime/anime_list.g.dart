@@ -11,7 +11,7 @@ AnimeListModel _$AnimeListModelFromJson(Map<String, dynamic> json) =>
       data: (json['data'] as List<dynamic>)
           .map((e) => AnimeListData.fromJson(e as Map<String, dynamic>))
           .toList(),
-      paging: AnimeListPaging.fromJson(json['paging'] as Map<String, dynamic>),
+      paging: AnimePaging.fromJson(json['paging'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$AnimeListModelToJson(AnimeListModel instance) =>
@@ -28,14 +28,4 @@ AnimeListData _$AnimeListDataFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$AnimeListDataToJson(AnimeListData instance) =>
     <String, dynamic>{
       'node': instance.node.toJson(),
-    };
-
-AnimeListPaging _$AnimeListPagingFromJson(Map<String, dynamic> json) =>
-    AnimeListPaging(
-      next: json['next'] as String,
-    );
-
-Map<String, dynamic> _$AnimeListPagingToJson(AnimeListPaging instance) =>
-    <String, dynamic>{
-      'next': instance.next,
     };
