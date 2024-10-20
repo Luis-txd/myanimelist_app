@@ -23,7 +23,7 @@ class _RestClient implements RestClient {
 
   @override
   Future<AnimeListModel> getAnimeList({
-    int? limit = 4,
+    int? limit = 6,
     int? offset = 0,
     String? q,
     String? fields,
@@ -45,7 +45,7 @@ class _RestClient implements RestClient {
     )
         .compose(
           _dio.options,
-          'anime',
+          '/v2/anime',
           queryParameters: queryParameters,
         )
         .copyWith(
@@ -65,40 +65,8 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<AnimeDetail> getAnimeDetail(int animeId) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<AnimeDetail>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          'anime/${animeId}',
-          queryParameters: queryParameters,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late AnimeDetail _value;
-    try {
-      _value = AnimeDetail.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
   Future<AnimeRankingModel> getAnimeRanking({
-    int? limit = 4,
+    int? limit = 6,
     int? offset = 0,
     String? ranking_type = 'all',
   }) async {
@@ -118,7 +86,7 @@ class _RestClient implements RestClient {
     )
         .compose(
           _dio.options,
-          'anime/ranking',
+          '/v2/anime/ranking',
           queryParameters: queryParameters,
         )
         .copyWith(
@@ -130,6 +98,51 @@ class _RestClient implements RestClient {
     late AnimeRankingModel _value;
     try {
       _value = AnimeRankingModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<AnimeSeasonalModel> getAnimeSeasonal(
+    String season,
+    int year, {
+    int? limit = 6,
+    int? offset = 0,
+    String? fields,
+    String? sort = 'anime_score',
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'limit': limit,
+      r'offset': offset,
+      r'fields': fields,
+      r'sort': sort,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<AnimeSeasonalModel>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/v2/anime/season/${year}/${season}',
+          queryParameters: queryParameters,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late AnimeSeasonalModel _value;
+    try {
+      _value = AnimeSeasonalModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

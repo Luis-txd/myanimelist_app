@@ -26,7 +26,6 @@ final Provider<Dio> dioProvider = Provider<Dio>((ProviderRef<Dio> ref) {
     PrettyDioLogger(
       request: false,
       responseBody: false,
-      requestHeader: false,
     ),
   ]);
 
@@ -53,5 +52,5 @@ final Provider<Dio> dioProvider = Provider<Dio>((ProviderRef<Dio> ref) {
 
 final Provider<RestClient> restClientMALProvider = Provider<RestClient>((ProviderRef<RestClient> ref) {
   final Dio dio = ref.watch(dioProvider);
-  return RestClient(dio, baseUrl: 'https://api.myanimelist.net/v2/');
+  return RestClient(dio, baseUrl: 'https://api.myanimelist.net');
 });

@@ -6,3 +6,17 @@ String getMonthName(int index) {
 //   });
   return '';
 }
+
+String getSeasonByMonth(int month) {
+  if (month >= 1 && month <= 3) {
+    return 'winter';
+  } else if (month >= 4 && month <= 6) {
+    return 'spring';
+  } else if (month >= 7 && month <= 9) {
+    return 'summer';
+  } else if (month >= 10 && month <= 12) {
+    return 'fall';
+  }
+
+  throw ArgumentError('Invalid month: $month.');
+}
