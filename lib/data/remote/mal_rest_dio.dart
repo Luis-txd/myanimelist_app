@@ -24,7 +24,8 @@ final Provider<Dio> dioProvider = Provider<Dio>((ProviderRef<Dio> ref) {
 
   dio.interceptors.addAll(<Interceptor>[
     PrettyDioLogger(
-      requestBody: true,
+      request: false,
+      responseBody: false,
     ),
   ]);
 

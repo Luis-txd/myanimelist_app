@@ -57,7 +57,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   }
 
   Widget buildLoadingRail() {
-    return const Center(child: CircularProgressIndicator());
+    return const Center(
+        child: SizedBox(
+      height: 165.0,
+      child: Center(
+        child: CircularProgressIndicator(),
+      ),
+    ));
   }
 
   @override

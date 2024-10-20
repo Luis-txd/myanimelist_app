@@ -2,6 +2,8 @@ import '../general/cache_manager.dart';
 import 'anime_data_provider.dart';
 
 class AnimeCacheManager extends CacheManager {
+  static const String animeRankingBaseKey = 'anime_ranking';
+
   String _getRankingKey(String baseKey, AnimeRankingParams params) {
     final keys = [baseKey];
 
@@ -21,18 +23,17 @@ class AnimeCacheManager extends CacheManager {
   }
 
   Future<String?> getAnimeRankingList(AnimeRankingParams params) async {
-    final key = _getRankingKey('anime_ranking', params);
-    await get(key);
-    return null;
+    final key = _getRankingKey(animeRankingBaseKey, params);
+    return get(key);
   }
 
   Future<void> setAnimeRankingList(String data, AnimeRankingParams params) async {
-    final key = _getRankingKey('anime_ranking', params);
+    final key = _getRankingKey(animeRankingBaseKey, params);
     await set(key, data);
   }
 
   Future<void> delAnimeRankingList(String key, AnimeRankingParams params) async {
-    final key = _getRankingKey('anime_ranking', params);
+    final key = _getRankingKey(animeRankingBaseKey, params);
     await del(key);
   }
 }

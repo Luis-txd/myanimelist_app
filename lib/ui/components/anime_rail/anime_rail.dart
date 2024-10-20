@@ -91,23 +91,6 @@ class _AnimeRailState extends ConsumerState<AnimeRail> {
               ],
             ),
           )
-        : Expanded(
-            flex: 0,
-            child: Column(
-              children: [
-                Padding(
-                  // Rail Title
-                  padding: const EdgeInsets.only(left: 5.0, bottom: 3.0),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      widget.title,
-                      style: AppTextTheme().h5.copyWith(height: 1, color: Colors.white),
-                    ),
-                  ),
-                ),
-                const CircularProgressIndicator(),
-              ],
-            ));
+        : Container();
   }
 }
