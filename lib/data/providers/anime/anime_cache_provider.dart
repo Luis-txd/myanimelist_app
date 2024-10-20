@@ -20,9 +20,19 @@ class AnimeCacheManager extends CacheManager {
     return keys.join('_');
   }
 
-  Future<String?> _getAnimeRankingList(AnimeRankingParams params) async {
+  Future<String?> getAnimeRankingList(AnimeRankingParams params) async {
     final key = _getRankingKey('anime_ranking', params);
     await get(key);
     return null;
+  }
+
+  Future<void> setAnimeRankingList(String data, AnimeRankingParams params) async {
+    final key = _getRankingKey('anime_ranking', params);
+    await set(key, data);
+  }
+
+  Future<void> delAnimeRankingList(String key, AnimeRankingParams params) async {
+    final key = _getRankingKey('anime_ranking', params);
+    await del(key);
   }
 }
