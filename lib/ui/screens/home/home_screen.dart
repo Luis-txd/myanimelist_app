@@ -61,6 +61,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final nowWatchingInfo = ref.watch(animeRankingProvider(nowWatchingRequestParams));
     final trendingInfo = ref.watch(animeRankingProvider(trendingRequestParams));

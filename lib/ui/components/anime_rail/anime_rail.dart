@@ -20,7 +20,9 @@ class _AnimeRailState extends ConsumerState<AnimeRail> {
 
   Widget buildAnimeRailItem(BuildContext context, AnimeNode node) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        // TODO(luistxd): send to anime detail with router push
+      },
       child: node.main_picture != null
           ? Card(
               color: Colors.transparent,
