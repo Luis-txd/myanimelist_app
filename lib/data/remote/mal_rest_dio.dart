@@ -26,6 +26,7 @@ final Provider<Dio> dioProvider = Provider<Dio>((ProviderRef<Dio> ref) {
     PrettyDioLogger(
       request: false,
       responseBody: false,
+      requestHeader: false,
     ),
   ]);
 

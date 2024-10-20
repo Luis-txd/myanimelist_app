@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -29,12 +30,26 @@ class _AnimeRailState extends ConsumerState<AnimeRail> {
               shadowColor: Colors.transparent,
               child: Column(
                 children: <Widget>[
-                  Image.network(
-                    node.main_picture!.medium,
+                  SizedBox(
                     height: kDefaultItemHeight,
                     width: kDefaultItemWidth,
-                    cacheHeight: kDefaultItemHeight.truncate(),
-                    cacheWidth: kDefaultItemWidth.truncate(),
+                    child: node.main_picture != null
+                        ? CachedNetworkImage(
+                            imageUrl: node.main_picture!.medium,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                            errorWidget: (context, url, error) {
+                              // TODO(luistxd): replace with placehold asset
+                              print('Error: $error');
+                              return const Center(
+                                child: Text('Error'),
+                              );
+                            },
+                            errorListener: (e) {
+                              debugPrint('Image Exception is: ${e.runtimeType}');
+                            },
+                          )
+                        : Container(), // TODO(luistxd): replace with placehold asset
                   ),
                   const SizedBox(height: 8),
                   SizedBox(
