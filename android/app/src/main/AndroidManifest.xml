@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="myanimelist_app"
+        android:label="Roku for MAL"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

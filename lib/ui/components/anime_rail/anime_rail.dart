@@ -23,6 +23,11 @@ class _AnimeRailState extends ConsumerState<AnimeRail> {
     return GestureDetector(
       onTap: () {
         // TODO(luistxd): send to anime detail with router push
+        print(node.id);
+      },
+      onLongPress: () {
+        // TODO(luistxd): open popup with anime details overview (smaller version)
+        print('Long ${node.id}');
       },
       child: node.main_picture != null
           ? Card(

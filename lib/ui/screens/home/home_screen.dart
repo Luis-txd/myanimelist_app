@@ -80,6 +80,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final trendingInfo = ref.watch(animeRankingProvider(trendingRequestParams));
     final topAiringInfo = ref.watch(animeRankingProvider(topAiringRequestParams));
     final topUpcomingInfo = ref.watch(animeRankingProvider(topUpcomingRequestParams));
+    // TODO(luistxd): usar paginação para preencher mais rails qnd se anda para a direita no rail
 
     return RefreshIndicator(
       onRefresh: () async {
