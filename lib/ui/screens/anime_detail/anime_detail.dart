@@ -12,11 +12,9 @@ class AnimeDetail extends ConsumerStatefulWidget {
 }
 
 class _AnimeDetailState extends ConsumerState<AnimeDetail> {
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     throw UnimplementedError();
   }
-  
 }
