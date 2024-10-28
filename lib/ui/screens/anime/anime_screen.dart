@@ -30,7 +30,7 @@ class _AnimeScreenState extends ConsumerState<AnimeScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNaviBar(selectedIndex: 1),
+      bottomNavigationBar: const BottomNaviBar(selectedIndex: 2),
     );
   }
 }

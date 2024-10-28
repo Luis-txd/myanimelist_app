@@ -47,7 +47,6 @@ class _RestClient implements RestClient {
           _dio.options,
           '/v2/anime',
           queryParameters: queryParameters,
-          data: _data,
         )
         .copyWith(
             baseUrl: _combineBaseUrls(
@@ -89,7 +88,6 @@ class _RestClient implements RestClient {
           _dio.options,
           '/v2/anime/ranking',
           queryParameters: queryParameters,
-          data: _data,
         )
         .copyWith(
             baseUrl: _combineBaseUrls(
@@ -135,7 +133,6 @@ class _RestClient implements RestClient {
           _dio.options,
           '/v2/anime/season/${year}/${season}',
           queryParameters: queryParameters,
-          data: _data,
         )
         .copyWith(
             baseUrl: _combineBaseUrls(
@@ -155,8 +152,7 @@ class _RestClient implements RestClient {
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
-        !(requestOptions.responseType == ResponseType.bytes ||
-            requestOptions.responseType == ResponseType.stream)) {
+        !(requestOptions.responseType == ResponseType.bytes || requestOptions.responseType == ResponseType.stream)) {
       if (T == String) {
         requestOptions.responseType = ResponseType.plain;
       } else {

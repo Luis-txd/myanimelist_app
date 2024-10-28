@@ -31,23 +31,29 @@ class _BottomNaviBarState extends ConsumerState<BottomNaviBar> {
               context.router.replace(const HomeScreen());
             }
           }, Icons.home),
-          buildBottomNaviButton(widget.selectedIndex, 'Anime', context, 1, containerHeight, () {
+          buildBottomNaviButton(widget.selectedIndex, 'Seasonal', context, 1, containerHeight, () {
             if (widget.selectedIndex != 1) {
+              // Route push to correct screen
+              context.router.replace(const SeasonalScreen());
+            }
+          }, Icons.calendar_today),
+          buildBottomNaviButton(widget.selectedIndex, 'Anime', context, 2, containerHeight, () {
+            if (widget.selectedIndex != 2) {
               context.router.replace(const AnimeScreen());
             }
           }, Icons.tv),
-          buildBottomNaviButton(widget.selectedIndex, 'Manga', context, 2, containerHeight, () {
-            if (widget.selectedIndex != 2) {
+          buildBottomNaviButton(widget.selectedIndex, 'Manga', context, 3, containerHeight, () {
+            if (widget.selectedIndex != 3) {
               // Route push to correct screen
               context.router.replace(const MangaScreen());
             }
           }, Icons.import_contacts),
-          buildBottomNaviButton(widget.selectedIndex, 'More', context, 3, containerHeight, () {
-            if (widget.selectedIndex != 3) {
-              // Route push to correct screen
-              context.router.replace(const MoreMenuScreen());
-            }
-          }, Icons.grid_view)
+          // buildBottomNaviButton(widget.selectedIndex, 'More', context, 3, containerHeight, () {
+          //   if (widget.selectedIndex != 3) {
+          //     // Route push to correct screen
+          //     context.router.replace(const MoreMenuScreen());
+          //   }
+          // }, Icons.grid_view)
         ],
       ),
     );

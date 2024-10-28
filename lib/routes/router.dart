@@ -39,5 +39,9 @@ class AppRouter extends $AppRouter {
       path: '/profile',
       page: ProfileScreen.page,
     ),
+    AutoRoute(
+      path: '/seasonal',
+      page: SeasonalScreen.page,
+    ),
   ];
 }
