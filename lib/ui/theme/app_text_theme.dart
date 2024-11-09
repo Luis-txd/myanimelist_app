@@ -65,6 +65,13 @@ class AppTextTheme {
         leadingDistribution: TextLeadingDistribution.even,
         fontFamily: 'SourceSansPro',
       ),
+      bodySmallBold: TextStyle(
+        fontSize: FontSize.pt14,
+        letterSpacing: 0,
+        fontWeight: FontWeight.bold,
+        leadingDistribution: TextLeadingDistribution.even,
+        fontFamily: 'SourceSansPro',
+      ),
       label: TextStyle(
         fontSize: FontSize.pt12,
         letterSpacing: 0,
@@ -102,6 +109,7 @@ class AppTextTheme {
     required this.bodyLarge,
     required this.bodyLargeBold,
     required this.bodySmall,
+    required this.bodySmallBold,
   });
   final TextStyle h1;
   final TextStyle h4;
@@ -115,6 +123,7 @@ class AppTextTheme {
   final TextStyle bodyLarge;
   final TextStyle bodyLargeBold;
   final TextStyle bodySmall;
+  final TextStyle bodySmallBold;
 
   // titles, subtitles, labels, naviBar, bodyNormal, bodyLarge
 }

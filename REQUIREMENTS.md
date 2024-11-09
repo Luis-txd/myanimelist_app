@@ -27,3 +27,7 @@ Editar facilmente o progresso na listagem de Anime/Manga
 # Exemplos:
 https://moelist.net
 https://github.com/axiel7/AniHyou-android
+
+Imgur
+CLient ID: 938e31d7a69dd03
+Secret: 412cd273715bcb59ede1b18027f37530a6dce035

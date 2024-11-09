@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -100,20 +101,22 @@ final animeSeasonalProvider = FutureProvider.autoDispose.family<AnimeSeasonalMod
     final cachedData = await cacheManager.getAnimeSeasonalList(params);
 
     if (cachedData != null) {
-      final cachedAnimeRankings = AnimeSeasonalModel.fromJson(json.decode(cachedData) as Map<String, dynamic>);
-      ref.state = AsyncValue.data(cachedAnimeRankings);
+      final cachedAnimeData = AnimeSeasonalModel.fromJson(json.decode(cachedData) as Map<String, dynamic>);
+      ref.state = AsyncValue.data(cachedAnimeData);
     }
 
     try {
       final AnimeSeasonalModel data = await client.getAnimeSeasonal(params.season, params.year,
           sort: params.sort, limit: params.limit, offset: params.offset, fields: params.fields);
       await cacheManager.setAnimeSeasonalList(json.encode(data.toJson()), params);
+      log('Anime seasonal data cached: ${data.toJson()}');
       return data;
     } catch (error) {
       if (kDebugMode) {
         print('Error fetching anime ranking: $error');
       }
       if (cachedData != null) {
+        log('Anime seasonal data cached: ${AnimeSeasonalModel.fromJson(json.decode(cachedData) as Map<String, dynamic>).toJson()}');
         return AnimeSeasonalModel.fromJson(json.decode(cachedData) as Map<String, dynamic>);
       }
       rethrow;
