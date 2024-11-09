@@ -32,7 +32,8 @@ class _SeasonalScreenState extends ConsumerState<SeasonalScreen> {
     selectedYear = now.year;
     selectedSeason = getSeasonByMonth(now.month);
 
-    seasonalParams = AnimeSeasonalParams(year: selectedYear, season: selectedSeason, limit: 15);
+    seasonalParams = AnimeSeasonalParams(
+        year: selectedYear, season: selectedSeason, limit: 15);
   }
 
   void _refreshSeasonalAnimes() {
@@ -73,70 +74,66 @@ class _SeasonalScreenState extends ConsumerState<SeasonalScreen> {
 
     return RefreshIndicator(
       onRefresh: () async {
-        await Future.delayed(const Duration(seconds: 1), _refreshSeasonalAnimes);
+        await Future.delayed(
+            const Duration(seconds: 1), _refreshSeasonalAnimes);
       },
       child: Scaffold(
           appBar: const AppBarWidget(),
-          body: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Expanded(
-                    child: seasonalAnimeList.when(
-                        data: (info) {
-                          return GridView.builder(
-                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-                            itemCount: seasonalAnimeList.value?.data.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              final item = info.data[index];
-                              return Column(
-                                children: [
-                                  SizedBox(
-                                    height: kDefaultItemHeight,
-                                    width: kDefaultItemWidth,
-                                    child: item.node.main_picture != null
-                                        ? CachedNetworkImage(
-                                            imageUrl: item.node.main_picture!.medium,
-                                            width: double.infinity,
-                                            fit: BoxFit.cover,
-                                            errorWidget: (context, url, error) {
-                                              // TODO(luistxd): replace with placehold asset
-                                              print('Error: $error');
-                                              return const Center(
-                                                child: Text('Error'),
-                                              );
-                                            },
-                                            errorListener: (e) {
-                                              debugPrint('Image Exception is: ${e.runtimeType}');
-                                            },
-                                          )
-                                        : Container(), // TODO(luistxd): replace with placehold asset
-                                  ),
-                                  const SizedBox(height: 8),
-                                  SizedBox(
-                                    width: kDefaultItemWidth,
-                                    child: Text(
-                                      item.node.title,
-                                      style: AppTextTheme().bodySmall.copyWith(height: 1, color: Colors.white),
-                                      softWrap: false,
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 2,
-                                    ),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        },
-                        error: buildRailErrorWidget,
-                        loading: buildLoadingRail),
-                  ),
-                ],
-              ),
-            ),
+          body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5),
+            child: seasonalAnimeList.when(
+                data: (info) {
+                  return GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2),
+                    itemCount: seasonalAnimeList.value?.data.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final item = info.data[index];
+                      return Column(
+                        children: [
+                          SizedBox(
+                            height: kDefaultItemHeight,
+                            width: kDefaultItemWidth,
+                            child: item.node.main_picture != null
+                                ? CachedNetworkImage(
+                                    imageUrl: item.node.main_picture!.medium,
+                                    width: double.infinity,
+                                    fit: BoxFit.cover,
+                                    errorWidget: (context, url, error) {
+                                      // TODO(luistxd): replace with placehold asset
+                                      print('Error: $error');
+                                      return const Center(
+                                        child: Text('Error'),
+                                      );
+                                    },
+                                    errorListener: (e) {
+                                      debugPrint(
+                                          'Image Exception is: ${e.runtimeType}');
+                                    },
+                                  )
+                                : Container(), // TODO(luistxd): replace with placehold asset
+                          ),
+                          const SizedBox(height: 8),
+                          SizedBox(
+                            width: kDefaultItemWidth,
+                            child: Text(
+                              item.node.title,
+                              style: AppTextTheme()
+                                  .bodySmall
+                                  .copyWith(height: 1, color: Colors.white),
+                              softWrap: false,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                error: buildRailErrorWidget,
+                loading: buildLoadingRail),
           ),
           bottomNavigationBar: const BottomNaviBar(selectedIndex: 1)),
     );
