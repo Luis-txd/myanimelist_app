@@ -7,16 +7,25 @@ String getMonthName(int index) {
   return '';
 }
 
-String getSeasonByMonth(int month) {
-  if (month >= 1 && month <= 3) {
-    return 'winter';
-  } else if (month >= 4 && month <= 6) {
-    return 'spring';
-  } else if (month >= 7 && month <= 9) {
-    return 'summer';
-  } else if (month >= 10 && month <= 12) {
-    return 'fall';
-  }
+// Map season to their corresponding months
+final Map<String, List<int>> seasonMonths = {
+  'winter': [1, 2, 3],
+  'spring': [4, 5, 6],
+  'summer': [7, 8, 9],
+  'fall': [10, 11, 12]
+};
 
+// Get season from month using the map
+String getSeasonByMonth(int month) {
+  for (final entry in seasonMonths.entries) {
+    if (entry.value.contains(month)) {
+      return entry.key;
+    }
+  }
   throw ArgumentError('Invalid month: $month.');
+}
+
+// Get months for a season directly from the map
+List<int> getSeasonMonths(String season) {
+  return seasonMonths[season] ?? [];
 }

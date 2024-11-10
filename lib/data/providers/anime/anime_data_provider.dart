@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -108,15 +107,29 @@ final animeSeasonalProvider = FutureProvider.autoDispose.family<AnimeSeasonalMod
     try {
       final AnimeSeasonalModel data = await client.getAnimeSeasonal(params.season, params.year,
           sort: params.sort, limit: params.limit, offset: params.offset, fields: params.fields);
+
+      // Filter animes that do not start in the selected season
+      // final seasonMonths = getSeasonMonths(params.season);
+      final List<AnimeSeasonalData> filteredData = data.data.where((anime) {
+        if (anime.node.start_date == null) {
+          return true;
+        }
+
+        final startDate = DateTime.parse(anime.node.start_date!);
+        return params.year ==
+            startDate.year /*&& startDate.month >= seasonMonths.first && startDate.month <= seasonMonths.last*/;
+      }).toList();
+
+      // print('Removed animes: ${removedAnimes.map((anime) => "${anime.node.title} -> (${anime.node.start_date})").join(', ')}');
+      data.data = filteredData;
       await cacheManager.setAnimeSeasonalList(json.encode(data.toJson()), params);
-      log('Anime seasonal data cached: ${data.toJson()}');
+
       return data;
     } catch (error) {
       if (kDebugMode) {
         print('Error fetching anime ranking: $error');
       }
       if (cachedData != null) {
-        log('Anime seasonal data cached: ${AnimeSeasonalModel.fromJson(json.decode(cachedData) as Map<String, dynamic>).toJson()}');
         return AnimeSeasonalModel.fromJson(json.decode(cachedData) as Map<String, dynamic>);
       }
       rethrow;

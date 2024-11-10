@@ -10,4 +10,6 @@ class AppColors {
 
   Color iconPrimary01 = const Color(0xFFFFFFFF);
   Color iconBackgroundPrimary01 = const Color(0xFFFAFAFA);
+
+  Color tagPrimaryColor01 = const Color(0xFF8C4BFF);
 }
