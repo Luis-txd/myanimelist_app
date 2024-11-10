@@ -11,3 +11,6 @@ const double kDefaultImageWidth = 110.0;
 const double kDefaultImageHeight = 160.0;
 
 const String malClientKey = 'cf53de31fa7f5424f3f23a15dae39d77';
+
+const double kDefaultAnimeCardWidth = 180.0;
+const double kDefaultAnimeCardHeight = 255.0;
