@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import '../../theme/app_text_theme.dart';
 
 class AnimeGridError extends StatelessWidget {
-  const AnimeGridError(
-      {super.key, required this.error, required this.stacktrace});
+  const AnimeGridError({super.key, required this.error, required this.stacktrace});
 
   final Object? error;
   final StackTrace? stacktrace;
@@ -21,9 +20,7 @@ class AnimeGridError extends StatelessWidget {
           ),
           Text(
             error.toString(),
-            style: AppTextTheme()
-                .bodyLarge
-                .copyWith(height: 1, color: Colors.white),
+            style: AppTextTheme().bodyLarge.copyWith(height: 1, color: Colors.white),
           ),
         ],
       ),

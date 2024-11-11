@@ -18,7 +18,6 @@ class AnimeCard extends ConsumerStatefulWidget {
 }
 
 class _AnimeCardState extends ConsumerState<AnimeCard> {
-
   static const int kDefaultNumTags = 2;
 
   @override
@@ -41,8 +40,7 @@ class _AnimeCardState extends ConsumerState<AnimeCard> {
                     ),
                     clipBehavior: Clip.hardEdge,
                     child: CachedNetworkImage(
-                      imageUrl: widget.item.main_picture!.large ??
-                          widget.item.main_picture!.medium,
+                      imageUrl: widget.item.main_picture!.large ?? widget.item.main_picture!.medium,
                       width: double.infinity,
                       height: double.infinity,
                       fit: BoxFit.cover,
@@ -91,9 +89,7 @@ class _AnimeCardState extends ConsumerState<AnimeCard> {
               width: kDefaultAnimeCardWidth,
               child: Text(
                 widget.item.title,
-                style: AppTextTheme()
-                    .bodySmall
-                    .copyWith(height: 1, color: Colors.white),
+                style: AppTextTheme().bodySmall.copyWith(height: 1, color: Colors.white),
                 softWrap: false,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,

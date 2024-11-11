@@ -68,20 +68,18 @@ class _SeasonalScreenState extends ConsumerState<SeasonalScreen> {
       shape: RoundedRectangleBorder(
         borderRadius:
             BorderRadius.circular(10), //TODO fzr dialog mais round nos corners
-        side: const BorderSide(
-          color: Colors.black,
-        ),
+        side: const BorderSide(),
       ),
       backgroundColor: Colors.white,
     );
 
-    final int startYear = 1910;
+    const int startYear = 1910;
     final int endYear = DateTime.now().year;
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0, left: 12.0, right: 12.0),
+      padding: const EdgeInsets.only(bottom: 18.0, left: 12.0, right: 12.0),
       child: Container(
-        height: 275,
+        height: 260,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius:
@@ -91,112 +89,113 @@ class _SeasonalScreenState extends ConsumerState<SeasonalScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const Text('Seasons'),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      SizedBox(
-                        height: 60,
-                        width: 60,
-                        child: IconButton(
-                          style: seasonsBtnStyle,
-                          onPressed: () {},
-                          icon: const Icon(Icons.cloudy_snowing),
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 2 - 75,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const Text('Seasons'),
+                    const SizedBox(height: 10),
+                    Row(
+                      children: [
+                        SizedBox(
+                          height: 60,
+                          width: 60,
+                          child: IconButton(
+                            style: seasonsBtnStyle,
+                            onPressed: () {},
+                            icon: const Icon(Icons.cloudy_snowing),
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 8.0),
-                      SizedBox(
-                        height: 60,
-                        width: 60,
-                        child: IconButton(
-                          style: seasonsBtnStyle,
-                          onPressed: () {},
-                          icon: const Icon(Icons.park),
+                        const SizedBox(width: 8.0),
+                        SizedBox(
+                          height: 60,
+                          width: 60,
+                          child: IconButton(
+                            style: seasonsBtnStyle,
+                            onPressed: () {},
+                            icon: const Icon(Icons.park),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 8.0),
-                  Row(
-                    children: [
-                      SizedBox(
-                        height: 60,
-                        width: 60,
-                        child: IconButton(
-                          style: seasonsBtnStyle,
-                          onPressed: () {},
-                          icon: const Icon(Icons.sunny),
+                      ],
+                    ),
+                    const SizedBox(height: 8.0),
+                    Row(
+                      children: [
+                        SizedBox(
+                          height: 60,
+                          width: 60,
+                          child: IconButton(
+                            style: seasonsBtnStyle,
+                            onPressed: () {},
+                            icon: const Icon(Icons.sunny),
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 8.0),
-                      SizedBox(
-                        height: 60,
-                        width: 60,
-                        child: IconButton(
-                          style: seasonsBtnStyle,
-                          onPressed: () {},
-                          icon: const Icon(Icons.air_sharp),
+                        const SizedBox(width: 8.0),
+                        SizedBox(
+                          height: 60,
+                          width: 60,
+                          child: IconButton(
+                            style: seasonsBtnStyle,
+                            onPressed: () {},
+                            icon: const Icon(Icons.air_sharp),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Year"),
-                  SizedBox(
-                    height: 150,
-                    width: 225,
-                    // TODO(luistxd): fix scroll controller once the dialog closes
-                    child: ListWheelScrollView.useDelegate(
-                      controller: _scrollController,
-                      itemExtent: 50,
-                      perspective: 0.005,
-                      diameterRatio: 1.5,
-                      onSelectedItemChanged: (index) {
-                        setState(() {
-                          selectedYear = startYear + index;
-                        });
-                      },
-                      physics: const FixedExtentScrollPhysics(),
-                      childDelegate: ListWheelChildBuilderDelegate(
-                        childCount: endYear - startYear + 1,
-                        builder: (context, index) {
-                          if (index < 0 || index > endYear - startYear) {
-                            return null;
-                          }
-                          final year = startYear + index;
-
-                          return SizedBox(
-                            width: 50,
-                            // color: Colors.blue,
-                            child: Center(
-                              child: Text(
-                                (startYear + index).toString(),
-                                style: AppTextTheme().bodyLargeBold.copyWith(
-                                      height: 1,
-                                      color: selectedYear == year
-                                          ? Colors.black
-                                          : Colors.black.withOpacity(0.3),
-                                    ),
-                              ),
-                            ),
-                          );
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 2 - 75,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Year'),
+                    SizedBox(
+                      height: 150,
+                      width: 100,
+                      // TODO(luistxd): fix scroll controller once the dialog closes
+                      child: ListWheelScrollView.useDelegate(
+                        controller: _scrollController,
+                        itemExtent: 50,
+                        perspective: 0.005,
+                        diameterRatio: 1.5,
+                        onSelectedItemChanged: (index) {
+                          setState(() {
+                            selectedYear = startYear + index;
+                          });
                         },
+                        physics: const FixedExtentScrollPhysics(),
+                        childDelegate: ListWheelChildBuilderDelegate(
+                          childCount: endYear - startYear + 1,
+                          builder: (context, index) {
+                            if (index < 0 || index > endYear - startYear) {
+                              return null;
+                            }
+                            final year = startYear + index;
+
+                            return SizedBox(
+                              width: 55,
+                              child: Center(
+                                child: Text(
+                                  (startYear + index).toString(),
+                                  style: AppTextTheme().bodyLargeBold.copyWith(
+                                        height: 1,
+                                        color: selectedYear == year
+                                            ? Colors.black
+                                            : Colors.black.withOpacity(0.3),
+                                      ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ),
-                  ),
-                  ElevatedButton(
-                    child: Text("Close"),
-                    onPressed: () => Navigator.of(context).pop(),
-                  ),
-                ],
-              )
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -232,7 +231,6 @@ class _SeasonalScreenState extends ConsumerState<SeasonalScreen> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         SizedBox(
                           height: 60,

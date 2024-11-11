@@ -13,8 +13,7 @@ class AnimeTag extends StatelessWidget {
     return Chip(
       label: Text(
         title,
-        style:
-            AppTextTheme().bodyXSmall.copyWith(height: 1, color: Colors.white),
+        style: AppTextTheme().bodyXSmall.copyWith(height: 1, color: Colors.white),
       ),
       backgroundColor: AppColors().tagPrimaryColor01,
       visualDensity: const VisualDensity(
