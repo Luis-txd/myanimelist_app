@@ -14,3 +14,8 @@ const String malClientKey = 'cf53de31fa7f5424f3f23a15dae39d77';
 
 const double kDefaultAnimeCardWidth = 180.0;
 const double kDefaultAnimeCardHeight = 255.0;
+
+const String clientId = 'cf53de31fa7f5424f3f23a15dae39d77';
+const String redirectUrl = 'yourapp://oauthredirect';
+const String authorizationEndpoint = 'https://myanimelist.net/v1/oauth2/authorize';
+const String tokenEndpoint = 'https://myanimelist.net/v1/oauth2/token';
