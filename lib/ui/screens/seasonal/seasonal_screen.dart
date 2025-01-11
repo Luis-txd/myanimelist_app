@@ -4,12 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../data/providers/anime/anime_data_provider.dart';
 import '../../../utils/AppUtils.dart';
-import '../../components/anime_grid/anime_card.dart';
-import '../../components/anime_grid/anime_grid_error.dart';
-import '../../components/anime_grid/anime_grid_loader.dart';
 import '../../components/app_bar/app_bar_widget.dart';
 import '../../components/navigation/bottom_navi_bar_widget.dart';
-import '../../theme/app_text_theme.dart';
 
 @RoutePage()
 class SeasonalScreen extends ConsumerStatefulWidget {
@@ -41,8 +37,7 @@ class _SeasonalScreenState extends ConsumerState<SeasonalScreen> {
     selectedSeason = getSeasonByMonth(now.month);
 
     _scrollController = FixedExtentScrollController(
-      initialItem: selectedYear -
-          1910, // Set the initial position based on selected year
+      initialItem: selectedYear - 1910, // Set the initial position based on selected year
     );
 
     seasonalParams = AnimeSeasonalParams(
@@ -62,7 +57,6 @@ class _SeasonalScreenState extends ConsumerState<SeasonalScreen> {
     super.dispose();
   }
 
-
   Widget buildTopBarSeasonYearIndicatorV2(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -78,14 +72,12 @@ class _SeasonalScreenState extends ConsumerState<SeasonalScreen> {
 
     return RefreshIndicator(
       onRefresh: () async {
-        await Future.delayed(
-            const Duration(seconds: 1), _refreshSeasonalAnimes);
+        await Future.delayed(const Duration(seconds: 1), _refreshSeasonalAnimes);
       },
       child: Scaffold(
         appBar: const AppBarWidget(),
         body: Padding(
-          padding: const EdgeInsets.symmetric(
-              horizontal: kDefaultPageHorizontalPadding, vertical: 5),
+          padding: const EdgeInsets.symmetric(horizontal: kDefaultPageHorizontalPadding, vertical: 5),
           child: SizedBox(
             height: 800,
             child: DefaultTabController(
@@ -104,15 +96,13 @@ class _SeasonalScreenState extends ConsumerState<SeasonalScreen> {
                             child: TabBar(
                               labelColor: Colors.white,
                               dividerColor: Colors.transparent,
-                              labelPadding:
-                                  const EdgeInsets.symmetric(horizontal: 5.0),
+                              labelPadding: const EdgeInsets.symmetric(horizontal: 5.0),
                               unselectedLabelColor: Colors.white,
                               indicatorSize: TabBarIndicatorSize.tab,
                               splashFactory: NoSplash.splashFactory,
                               indicator: BoxDecoration(
                                 color: Colors.blue,
-                                borderRadius: BorderRadius.circular(
-                                    24),
+                                borderRadius: BorderRadius.circular(24),
                               ),
                               tabs: const [
                                 Align(
@@ -154,9 +144,9 @@ class _SeasonalScreenState extends ConsumerState<SeasonalScreen> {
                   const Expanded(
                     child: TabBarView(
                       children: [
-                        Center(child: Text("Content for Tab 1")),
-                        Center(child: Text("Content for Tab 2")),
-                        Center(child: Text("Content for Tab 3")),
+                        Center(child: Text('Content for Tab 1')),
+                        Center(child: Text('Content for Tab 2')),
+                        Center(child: Text('Content for Tab 3')),
                       ],
                     ),
                   ),

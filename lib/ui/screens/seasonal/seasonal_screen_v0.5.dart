@@ -41,8 +41,7 @@ class _SeasonalScreenState extends ConsumerState<SeasonalScreen> {
     selectedSeason = getSeasonByMonth(now.month);
 
     _scrollController = FixedExtentScrollController(
-      initialItem: selectedYear -
-          1910, // Set the initial position based on selected year
+      initialItem: selectedYear - 1910, // Set the initial position based on selected year
     );
 
     seasonalParams = AnimeSeasonalParams(
@@ -66,8 +65,7 @@ class _SeasonalScreenState extends ConsumerState<SeasonalScreen> {
     final ButtonStyle seasonsBtnStyle = ElevatedButton.styleFrom(
       textStyle: const TextStyle(fontSize: 20),
       shape: RoundedRectangleBorder(
-        borderRadius:
-            BorderRadius.circular(10), //TODO fzr dialog mais round nos corners
+        borderRadius: BorderRadius.circular(10), //TODO fzr dialog mais round nos corners
         side: const BorderSide(),
       ),
       backgroundColor: Colors.white,
@@ -82,8 +80,7 @@ class _SeasonalScreenState extends ConsumerState<SeasonalScreen> {
         height: 260,
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius:
-              BorderRadius.circular(20), // Rounded corners on all sides
+          borderRadius: BorderRadius.circular(20), // Rounded corners on all sides
         ),
         child: Center(
           child: Row(
@@ -182,9 +179,7 @@ class _SeasonalScreenState extends ConsumerState<SeasonalScreen> {
                                   (startYear + index).toString(),
                                   style: AppTextTheme().bodyLargeBold.copyWith(
                                         height: 1,
-                                        color: selectedYear == year
-                                            ? Colors.black
-                                            : Colors.black.withOpacity(0.3),
+                                        color: selectedYear == year ? Colors.black : Colors.black.withOpacity(0.3),
                                       ),
                                 ),
                               ),
@@ -235,8 +230,7 @@ class _SeasonalScreenState extends ConsumerState<SeasonalScreen> {
                   backgroundColor: Colors.transparent,
                   builder: (BuildContext context) {
                     _scrollController = FixedExtentScrollController(
-                      initialItem: selectedYear -
-                          1910, // Set the initial position based on selected year
+                      initialItem: selectedYear - 1910, // Set the initial position based on selected year
                     );
                     return buildSelectionDialog(context);
                   }),
@@ -255,14 +249,12 @@ class _SeasonalScreenState extends ConsumerState<SeasonalScreen> {
 
     return RefreshIndicator(
       onRefresh: () async {
-        await Future.delayed(
-            const Duration(seconds: 1), _refreshSeasonalAnimes);
+        await Future.delayed(const Duration(seconds: 1), _refreshSeasonalAnimes);
       },
       child: Scaffold(
           appBar: const AppBarWidget(),
           body: Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: kDefaultPageHorizontalPadding, vertical: 5),
+            padding: const EdgeInsets.symmetric(horizontal: kDefaultPageHorizontalPadding, vertical: 5),
             child: SizedBox(
               height: 800,
               child: Column(
@@ -275,13 +267,11 @@ class _SeasonalScreenState extends ConsumerState<SeasonalScreen> {
                         return GridView.builder(
                           shrinkWrap: true,
                           // physics: const NeverScrollableScrollPhysics(),
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             crossAxisSpacing: kDefaultCrossAxisSpacing,
                             mainAxisSpacing: kDefaultMainAxisSpacing,
-                            childAspectRatio:
-                                kDefaultChildAspectRatio, // default with no tags: 0.65
+                            childAspectRatio: kDefaultChildAspectRatio, // default with no tags: 0.65
                           ),
                           itemCount: seasonalAnimeList.value?.data.length,
                           itemBuilder: (BuildContext context, int index) {

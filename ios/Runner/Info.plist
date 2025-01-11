@@ -45,5 +45,14 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>myapp</string> <!-- Replace 'myapp' with your redirect scheme -->
+            </array>
+        </dict>
+    </array>
 </dict>
 </plist>
