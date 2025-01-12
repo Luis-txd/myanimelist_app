@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:math';
+
 String getMonthName(int index) {
   // seasonMonths['winter']?.forEach((month) {
 //     // Format the integer month to a readable string
@@ -28,4 +31,11 @@ String getSeasonByMonth(int month) {
 // Get months for a season directly from the map
 List<int> getSeasonMonths(String season) {
   return seasonMonths[season] ?? [];
+}
+
+/// Generates a random string for the code verifier.
+String generateCodeVerifier() {
+  final random = Random.secure();
+  final code = List<int>.generate(64, (index) => random.nextInt(256)); // Length: 64
+  return base64UrlEncode(code).replaceAll('=', ''); // Ensure no padding
 }

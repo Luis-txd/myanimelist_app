@@ -56,10 +56,7 @@ dependencies:
   flutter_secure_storage:  ^9.1.1
   cached_network_image: ^3.4.0
   crypto: ^3.0.0
-  flutter_appauth: ^5.0.0
-  url_launcher: ^6.1.10
-  webview_flutter: ^4.0.1
-  oauth2: ^2.0.3
+  flutter_web_auth_2: ^4.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

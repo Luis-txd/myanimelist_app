@@ -310,6 +310,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  desktop_webview_window:
+    dependency: transitive
+    description:
+      name: desktop_webview_window
+      sha256: "57cf20d81689d5cbb1adfd0017e96b669398a669d927906073b0e42fc64111c0"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.3"
   dio:
     dependency: "direct main"
     description:
@@ -363,22 +371,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_appauth:
-    dependency: "direct main"
-    description:
-      name: flutter_appauth
-      sha256: e2f48b18420d98b579822f1a0cac167179ca9dc3da1b0144399d0ccc7be192c8
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.0.0"
-  flutter_appauth_platform_interface:
-    dependency: transitive
-    description:
-      name: flutter_appauth_platform_interface
-      sha256: "4f1a706990457c9b28cfd0432baf6595297199a340d36d669b5b5f53950866a6"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.2.0+1"
   flutter_cache_manager:
     dependency: transitive
     description:
@@ -488,6 +480,22 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_web_auth_2:
+    dependency: "direct main"
+    description:
+      name: flutter_web_auth_2
+      sha256: "3c14babeaa066c371f3a743f204dd0d348b7d42ffa6fae7a9847a521aff33696"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.1.0"
+  flutter_web_auth_2_platform_interface:
+    dependency: transitive
+    description:
+      name: flutter_web_auth_2_platform_interface
+      sha256: c63a472c8070998e4e422f6b34a17070e60782ac442107c70000dd1bed645f4d
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.1.0"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -717,14 +725,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
-  oauth2:
-    dependency: "direct main"
-    description:
-      name: oauth2
-      sha256: c84470642cbb2bec450ccab2f8520c079cd1ca546a76ffd5c40589e07f4e8bf4
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.3"
   octo_image:
     dependency: transitive
     description:
@@ -1179,7 +1179,7 @@ packages:
     source: hosted
     version: "2.2.2"
   url_launcher:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: url_launcher
       sha256: "9d06212b1362abc2f0f0d78e6f09f726608c74e3b9462e8368bb03314aa8d603"
@@ -1314,38 +1314,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
-  webview_flutter:
-    dependency: "direct main"
-    description:
-      name: webview_flutter
-      sha256: "889a0a678e7c793c308c68739996227c9661590605e70b1f6cf6b9a6634f7aec"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.10.0"
-  webview_flutter_android:
-    dependency: transitive
-    description:
-      name: webview_flutter_android
-      sha256: "3d535126f7244871542b2f0b0fcf94629c9a14883250461f9abe1a6644c1c379"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.2.0"
-  webview_flutter_platform_interface:
-    dependency: transitive
-    description:
-      name: webview_flutter_platform_interface
-      sha256: d937581d6e558908d7ae3dc1989c4f87b786891ab47bb9df7de548a151779d8d
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.10.0"
-  webview_flutter_wkwebview:
-    dependency: transitive
-    description:
-      name: webview_flutter_wkwebview
-      sha256: "4adc14ea9a770cc9e2c8f1ac734536bd40e82615bd0fa6b94be10982de656cc7"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.17.0"
   win32:
     dependency: transitive
     description:
@@ -1354,6 +1322,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.7.1"
+  window_to_front:
+    dependency: transitive
+    description:
+      name: window_to_front
+      sha256: "7aef379752b7190c10479e12b5fd7c0b9d92adc96817d9e96c59937929512aee"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.3"
   xdg_directories:
     dependency: transitive
     description:
