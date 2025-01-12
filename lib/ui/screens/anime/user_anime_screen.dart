@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../data/providers/auth/auth_provider.dart';
 import '../../../utils/AppUtils.dart';
 import '../../components/app_bar/app_bar_widget.dart';
 import '../../components/navigation/bottom_navi_bar_widget.dart';
@@ -92,6 +93,8 @@ class _AnimeScreenState extends ConsumerState<AnimeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final authNotifier = ref.read(authProvider.notifier);
+
     return Scaffold(
       appBar: const AppBarWidget(),
       body: Center(
