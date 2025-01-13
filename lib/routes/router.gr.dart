@@ -15,8 +15,7 @@ import 'package:roku_for_mal/ui/screens/manga/manga_screen.dart' as _i3;
 import 'package:roku_for_mal/ui/screens/more_menu/more_menu_screen.dart' as _i4;
 import 'package:roku_for_mal/ui/screens/profile/profile_screen.dart' as _i5;
 import 'package:roku_for_mal/ui/screens/search/search_screen.dart' as _i6;
-import 'package:roku_for_mal/ui/screens/seasonal/seasonal_screen_v0.5.dart'
-    as _i7;
+import 'package:roku_for_mal/ui/screens/seasonal/seasonal_screen_v0.5.dart' as _i7;
 import 'package:roku_for_mal/ui/screens/splashscreen/splash_screen.dart' as _i8;
 
 abstract class $AppRouter extends _i9.RootStackRouter {

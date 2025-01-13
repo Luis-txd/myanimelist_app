@@ -1,5 +1,4 @@
 class AuthState {
-
   AuthState({
     this.isLogged = false,
     this.accessToken,
@@ -14,13 +13,7 @@ class AuthState {
   final bool isLoading;
   final String? expiresAt;
 
-  AuthState copyWith({
-    bool? isLogged,
-    String? accessToken,
-    String? refreshToken,
-    bool? isLoading,
-    String? expiresAt
-  }) {
+  AuthState copyWith({bool? isLogged, String? accessToken, String? refreshToken, bool? isLoading, String? expiresAt}) {
     return AuthState(
       isLogged: isLogged ?? this.isLogged,
       accessToken: accessToken ?? this.accessToken,

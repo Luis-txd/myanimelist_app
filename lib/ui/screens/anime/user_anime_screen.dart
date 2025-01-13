@@ -21,7 +21,6 @@ class AnimeScreen extends ConsumerStatefulWidget {
 }
 
 class _AnimeScreenState extends ConsumerState<AnimeScreen> {
-
   // if not logged in, include a button to go to the login page?
   String? _accessToken;
   final String _clientId = 'cf53de31fa7f5424f3f23a15dae39d77';
@@ -58,8 +57,7 @@ class _AnimeScreenState extends ConsumerState<AnimeScreen> {
         // Exchange the authorization code for an access token
         await exchangeCodeForToken(_clientId, code, _redirectUri, codeVerifier);
       }
-
-    } catch (e, stacktrace) {
+    } catch (e) {
       print('ERROR: $e');
     }
   }
@@ -110,10 +108,14 @@ class _AnimeScreenState extends ConsumerState<AnimeScreen> {
               child: const Text('Login with MyAnimeList'),
             ),
             const SizedBox(height: 20),
-            Text('Access Token:', style:  AppTextTheme().bodySmall.copyWith(height: 1, color: Colors.white)),
+            Text('Access Token:', style: AppTextTheme().bodySmall.copyWith(height: 1, color: Colors.white)),
             if (_accessToken != null) ...[
               const SizedBox(height: 10),
-              Text(_accessToken ?? 'TEXT', textAlign: TextAlign.center, style:  AppTextTheme().bodySmall.copyWith(height: 1, color: Colors.white),),
+              Text(
+                _accessToken ?? 'TEXT',
+                textAlign: TextAlign.center,
+                style: AppTextTheme().bodySmall.copyWith(height: 1, color: Colors.white),
+              ),
             ],
           ],
         ),

@@ -14,9 +14,7 @@ final authProvider = StateNotifierProvider<AuthNotifier, AuthState>((ref) {
   return AuthNotifier(ref);
 });
 
-
-class AuthNotifier extends StateNotifier<AuthState>{
-
+class AuthNotifier extends StateNotifier<AuthState> {
   AuthNotifier(this.ref) : super(AuthState()) {
     _initializeAuthState();
   }
@@ -31,8 +29,7 @@ class AuthNotifier extends StateNotifier<AuthState>{
       final isLogged = await _checkUserLogged();
       final accessToken = await _storage.read(key: 'accessToken');
       final refreshToken = await _storage.read(key: 'refreshToken');
-      state = AuthState(
-          isLogged: isLogged, accessToken: accessToken, refreshToken: refreshToken);
+      state = AuthState(isLogged: isLogged, accessToken: accessToken, refreshToken: refreshToken);
       stateInitialized = true;
       //_initializationCompleter.complete();
     } catch (e) {
@@ -55,6 +52,7 @@ class AuthNotifier extends StateNotifier<AuthState>{
     }
     return true;
   }
+
   Future<void> startAuthorizationFlow() async {
     if (state.isLoading) return;
 
@@ -86,11 +84,9 @@ class AuthNotifier extends StateNotifier<AuthState>{
         // Exchange the authorization code for an access token
         await exchangeCodeForToken(AuthConfigs().clientId, code, AuthConfigs().redirectUri, codeVerifier);
       }
-
-    } catch (e, stacktrace) {
+    } catch (e) {
       print('ERROR: $e');
     }
-
   }
 
   Future<void> exchangeCodeForToken(String clientId, String code, String redirectUri, String codeVerifier) async {
