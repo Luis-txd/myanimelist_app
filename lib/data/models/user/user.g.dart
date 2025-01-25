@@ -14,7 +14,8 @@ UserDetail _$UserDetailFromJson(Map<String, dynamic> json) => UserDetail(
       createdAt: DateTime.parse(json['createdAt'] as String),
     );
 
-Map<String, dynamic> _$UserDetailToJson(UserDetail instance) => <String, dynamic>{
+Map<String, dynamic> _$UserDetailToJson(UserDetail instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'username': instance.username,
@@ -22,7 +23,8 @@ Map<String, dynamic> _$UserDetailToJson(UserDetail instance) => <String, dynamic
       'createdAt': instance.createdAt.toIso8601String(),
     };
 
-UserMyListStatus _$UserMyListStatusFromJson(Map<String, dynamic> json) => UserMyListStatus(
+UserMyListStatus _$UserMyListStatusFromJson(Map<String, dynamic> json) =>
+    UserMyListStatus(
       score: (json['score'] as num).toInt(),
       num_episodes_watched: (json['num_episodes_watched'] as num).toInt(),
       is_rewatching: json['is_rewatching'] as bool,
@@ -34,10 +36,15 @@ UserMyListStatus _$UserMyListStatusFromJson(Map<String, dynamic> json) => UserMy
       updated_at: DateTime.parse(json['updated_at'] as String),
     )
       ..status = json['status'] as String?
-      ..start_date = json['start_date'] == null ? null : DateTime.parse(json['start_date'] as String)
-      ..finish_date = json['finish_date'] == null ? null : DateTime.parse(json['finish_date'] as String);
+      ..start_date = json['start_date'] == null
+          ? null
+          : DateTime.parse(json['start_date'] as String)
+      ..finish_date = json['finish_date'] == null
+          ? null
+          : DateTime.parse(json['finish_date'] as String);
 
-Map<String, dynamic> _$UserMyListStatusToJson(UserMyListStatus instance) => <String, dynamic>{
+Map<String, dynamic> _$UserMyListStatusToJson(UserMyListStatus instance) =>
+    <String, dynamic>{
       'status': instance.status,
       'score': instance.score,
       'num_episodes_watched': instance.num_episodes_watched,
